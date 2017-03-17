@@ -48,7 +48,7 @@ message Connect_Response
 
 message Authenticate 
 {
-  string ChannelId = 1;
+  uint32 ChannelId = 1;
   string AuthKey = 2;
 }
 

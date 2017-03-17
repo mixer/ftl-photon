@@ -471,20 +471,6 @@ class Authenticate : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
-  // string ChannelId = 1;
-  void clear_channelid();
-  static const int kChannelIdFieldNumber = 1;
-  const ::std::string& channelid() const;
-  void set_channelid(const ::std::string& value);
-  #if LANG_CXX11
-  void set_channelid(::std::string&& value);
-  #endif
-  void set_channelid(const char* value);
-  void set_channelid(const char* value, size_t size);
-  ::std::string* mutable_channelid();
-  ::std::string* release_channelid();
-  void set_allocated_channelid(::std::string* channelid);
-
   // string AuthKey = 2;
   void clear_authkey();
   static const int kAuthKeyFieldNumber = 2;
@@ -499,12 +485,18 @@ class Authenticate : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::std::string* release_authkey();
   void set_allocated_authkey(::std::string* authkey);
 
+  // uint32 ChannelId = 1;
+  void clear_channelid();
+  static const int kChannelIdFieldNumber = 1;
+  ::google::protobuf::uint32 channelid() const;
+  void set_channelid(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:Photon.Commands.Authenticate)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr channelid_;
   ::google::protobuf::internal::ArenaStringPtr authkey_;
+  ::google::protobuf::uint32 channelid_;
   mutable int _cached_size_;
   friend struct  protobuf_PhotonCommands_2eproto::TableStruct;
 };
@@ -737,56 +729,18 @@ inline void Connect_Response::set_allocated_hmackey(::std::string* hmackey) {
 
 // Authenticate
 
-// string ChannelId = 1;
+// uint32 ChannelId = 1;
 inline void Authenticate::clear_channelid() {
-  channelid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  channelid_ = 0u;
 }
-inline const ::std::string& Authenticate::channelid() const {
+inline ::google::protobuf::uint32 Authenticate::channelid() const {
   // @@protoc_insertion_point(field_get:Photon.Commands.Authenticate.ChannelId)
-  return channelid_.GetNoArena();
+  return channelid_;
 }
-inline void Authenticate::set_channelid(const ::std::string& value) {
+inline void Authenticate::set_channelid(::google::protobuf::uint32 value) {
   
-  channelid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  channelid_ = value;
   // @@protoc_insertion_point(field_set:Photon.Commands.Authenticate.ChannelId)
-}
-#if LANG_CXX11
-inline void Authenticate::set_channelid(::std::string&& value) {
-  
-  channelid_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Photon.Commands.Authenticate.ChannelId)
-}
-#endif
-inline void Authenticate::set_channelid(const char* value) {
-  
-  channelid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Photon.Commands.Authenticate.ChannelId)
-}
-inline void Authenticate::set_channelid(const char* value, size_t size) {
-  
-  channelid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Photon.Commands.Authenticate.ChannelId)
-}
-inline ::std::string* Authenticate::mutable_channelid() {
-  
-  // @@protoc_insertion_point(field_mutable:Photon.Commands.Authenticate.ChannelId)
-  return channelid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* Authenticate::release_channelid() {
-  // @@protoc_insertion_point(field_release:Photon.Commands.Authenticate.ChannelId)
-  
-  return channelid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void Authenticate::set_allocated_channelid(::std::string* channelid) {
-  if (channelid != NULL) {
-    
-  } else {
-    
-  }
-  channelid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), channelid);
-  // @@protoc_insertion_point(field_set_allocated:Photon.Commands.Authenticate.ChannelId)
 }
 
 // string AuthKey = 2;

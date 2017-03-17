@@ -152,7 +152,7 @@ void AddDescriptorsImpl() {
       "lVersion\"d\n\020Connect_Response\022\?\n\025ServerPr"
       "otocolVersion\030\001 \001(\0162 .Photon.Commands.Pr"
       "otocolVersion\022\017\n\007HmacKey\030\002 \001(\t\"2\n\014Authen"
-      "ticate\022\021\n\tChannelId\030\001 \001(\t\022\017\n\007AuthKey\030\002 \001"
+      "ticate\022\021\n\tChannelId\030\001 \001(\r\022\017\n\007AuthKey\030\002 \001"
       "(\t\"\027\n\025Authenticate_Response*#\n\017ProtocolV"
       "ersion\022\010\n\004NONE\020\000\022\006\n\002V1\020\001*\337\002\n\013StatusCodes"
       "\022\013\n\007UNKNOWN\020\000\022\007\n\002OK\020\310\001\022\t\n\004PING\020\311\001\022\020\n\013BAD"
@@ -1126,20 +1126,17 @@ Authenticate::Authenticate(const Authenticate& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  channelid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.channelid().size() > 0) {
-    channelid_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.channelid_);
-  }
   authkey_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.authkey().size() > 0) {
     authkey_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.authkey_);
   }
+  channelid_ = from.channelid_;
   // @@protoc_insertion_point(copy_constructor:Photon.Commands.Authenticate)
 }
 
 void Authenticate::SharedCtor() {
-  channelid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   authkey_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  channelid_ = 0u;
   _cached_size_ = 0;
 }
 
@@ -1149,7 +1146,6 @@ Authenticate::~Authenticate() {
 }
 
 void Authenticate::SharedDtor() {
-  channelid_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   authkey_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -1178,8 +1174,8 @@ Authenticate* Authenticate::New(::google::protobuf::Arena* arena) const {
 
 void Authenticate::Clear() {
 // @@protoc_insertion_point(message_clear_start:Photon.Commands.Authenticate)
-  channelid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   authkey_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  channelid_ = 0u;
 }
 
 bool Authenticate::MergePartialFromCodedStream(
@@ -1192,15 +1188,13 @@ bool Authenticate::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string ChannelId = 1;
+      // uint32 ChannelId = 1;
       case 1: {
-        if (tag == 10u) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_channelid()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->channelid().data(), this->channelid().length(),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Photon.Commands.Authenticate.ChannelId"));
+        if (tag == 8u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &channelid_)));
         } else {
           goto handle_unusual;
         }
@@ -1246,14 +1240,9 @@ failure:
 void Authenticate::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:Photon.Commands.Authenticate)
-  // string ChannelId = 1;
-  if (this->channelid().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->channelid().data(), this->channelid().length(),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Photon.Commands.Authenticate.ChannelId");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->channelid(), output);
+  // uint32 ChannelId = 1;
+  if (this->channelid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->channelid(), output);
   }
 
   // string AuthKey = 2;
@@ -1273,15 +1262,9 @@ void Authenticate::SerializeWithCachedSizes(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic;  // Unused
   // @@protoc_insertion_point(serialize_to_array_start:Photon.Commands.Authenticate)
-  // string ChannelId = 1;
-  if (this->channelid().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->channelid().data(), this->channelid().length(),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Photon.Commands.Authenticate.ChannelId");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->channelid(), target);
+  // uint32 ChannelId = 1;
+  if (this->channelid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->channelid(), target);
   }
 
   // string AuthKey = 2;
@@ -1303,18 +1286,18 @@ size_t Authenticate::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:Photon.Commands.Authenticate)
   size_t total_size = 0;
 
-  // string ChannelId = 1;
-  if (this->channelid().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->channelid());
-  }
-
   // string AuthKey = 2;
   if (this->authkey().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->authkey());
+  }
+
+  // uint32 ChannelId = 1;
+  if (this->channelid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->channelid());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1343,13 +1326,12 @@ void Authenticate::MergeFrom(const Authenticate& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:Photon.Commands.Authenticate)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.channelid().size() > 0) {
-
-    channelid_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.channelid_);
-  }
   if (from.authkey().size() > 0) {
 
     authkey_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.authkey_);
+  }
+  if (from.channelid() != 0) {
+    set_channelid(from.channelid());
   }
 }
 
@@ -1376,8 +1358,8 @@ void Authenticate::Swap(Authenticate* other) {
   InternalSwap(other);
 }
 void Authenticate::InternalSwap(Authenticate* other) {
-  channelid_.Swap(&other->channelid_);
   authkey_.Swap(&other->authkey_);
+  std::swap(channelid_, other->channelid_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
@@ -1389,56 +1371,18 @@ void Authenticate::InternalSwap(Authenticate* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // Authenticate
 
-// string ChannelId = 1;
+// uint32 ChannelId = 1;
 void Authenticate::clear_channelid() {
-  channelid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  channelid_ = 0u;
 }
-const ::std::string& Authenticate::channelid() const {
+::google::protobuf::uint32 Authenticate::channelid() const {
   // @@protoc_insertion_point(field_get:Photon.Commands.Authenticate.ChannelId)
-  return channelid_.GetNoArena();
+  return channelid_;
 }
-void Authenticate::set_channelid(const ::std::string& value) {
+void Authenticate::set_channelid(::google::protobuf::uint32 value) {
   
-  channelid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  channelid_ = value;
   // @@protoc_insertion_point(field_set:Photon.Commands.Authenticate.ChannelId)
-}
-#if LANG_CXX11
-void Authenticate::set_channelid(::std::string&& value) {
-  
-  channelid_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Photon.Commands.Authenticate.ChannelId)
-}
-#endif
-void Authenticate::set_channelid(const char* value) {
-  
-  channelid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Photon.Commands.Authenticate.ChannelId)
-}
-void Authenticate::set_channelid(const char* value, size_t size) {
-  
-  channelid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Photon.Commands.Authenticate.ChannelId)
-}
-::std::string* Authenticate::mutable_channelid() {
-  
-  // @@protoc_insertion_point(field_mutable:Photon.Commands.Authenticate.ChannelId)
-  return channelid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-::std::string* Authenticate::release_channelid() {
-  // @@protoc_insertion_point(field_release:Photon.Commands.Authenticate.ChannelId)
-  
-  return channelid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-void Authenticate::set_allocated_channelid(::std::string* channelid) {
-  if (channelid != NULL) {
-    
-  } else {
-    
-  }
-  channelid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), channelid);
-  // @@protoc_insertion_point(field_set_allocated:Photon.Commands.Authenticate.ChannelId)
 }
 
 // string AuthKey = 2;
