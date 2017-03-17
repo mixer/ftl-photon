@@ -136,10 +136,10 @@ void AddDescriptorsImpl() {
       "EAM_KEY\020\225\003\022\023\n\016CHANNEL_IN_USE\020\226\003\022\027\n\022REGIO"
       "N_UNSUPPORTED\020\227\003\022\025\n\020NO_MEDIA_TIMEOUT\020\230\003\022"
       "\032\n\025INTERNAL_SERVER_ERROR\020\364\003\022\033\n\026INTERNAL_"
-      "COMMAND_ERROR\020\365\003b\006proto3"
+      "COMMAND_ERROR\020\365\003B\nZ\010photongob\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 704);
+      descriptor, 716);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "PhotonCommands.proto", &protobuf_RegisterTypes);
   ::google::protobuf::protobuf_google_2fprotobuf_2fany_2eproto::AddDescriptors();
