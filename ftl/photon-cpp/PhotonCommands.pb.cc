@@ -128,18 +128,20 @@ void AddDescriptorsImpl() {
       "lVersion\"d\n\020Connect_Response\022\?\n\025ServerPr"
       "otocolVersion\030\001 \001(\0162 .Photon.Commands.Pr"
       "otocolVersion\022\017\n\007HmacKey\030\003 \001(\t*#\n\017Protoc"
-      "olVersion\022\010\n\004NONE\020\000\022\006\n\002V1\020\001*\262\002\n\013StatusCo"
+      "olVersion\022\010\n\004NONE\020\000\022\006\n\002V1\020\001*\337\002\n\013StatusCo"
       "des\022\013\n\007UNKNOWN\020\000\022\007\n\002OK\020\310\001\022\t\n\004PING\020\311\001\022\020\n\013"
       "BAD_REQUEST\020\220\003\022\021\n\014UNAUTHORIZED\020\221\003\022\020\n\013OLD"
-      "_VERSION\020\222\003\022\031\n\024AUDIO_SSRC_COLLISION\020\223\003\022\031"
-      "\n\024VIDEO_SSRC_COLLISION\020\224\003\022\027\n\022INVALID_STR"
-      "EAM_KEY\020\225\003\022\023\n\016CHANNEL_IN_USE\020\226\003\022\027\n\022REGIO"
-      "N_UNSUPPORTED\020\227\003\022\025\n\020NO_MEDIA_TIMEOUT\020\230\003\022"
-      "\032\n\025INTERNAL_SERVER_ERROR\020\364\003\022\033\n\026INTERNAL_"
-      "COMMAND_ERROR\020\365\003B\nZ\010photongob\006proto3"
+      "_VERSION\020\222\003\022\020\n\013NO_RESPONSE\020\223\003\022\031\n\024AUDIO_S"
+      "SRC_COLLISION\020\224\003\022\031\n\024VIDEO_SSRC_COLLISION"
+      "\020\225\003\022\027\n\022INVALID_STREAM_KEY\020\226\003\022\023\n\016CHANNEL_"
+      "IN_USE\020\227\003\022\027\n\022REGION_UNSUPPORTED\020\230\003\022\025\n\020NO"
+      "_MEDIA_TIMEOUT\020\231\003\022\032\n\025INTERNAL_SERVER_ERR"
+      "OR\020\364\003\022\033\n\026INTERNAL_COMMAND_ERROR\020\365\003\022\031\n\024IN"
+      "TERNAL_LOCAL_ERROR\020\366\003B\nZ\010photongob\006proto"
+      "3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 716);
+      descriptor, 761);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "PhotonCommands.proto", &protobuf_RegisterTypes);
   ::google::protobuf::protobuf_google_2fprotobuf_2fany_2eproto::AddDescriptors();
@@ -191,8 +193,10 @@ bool StatusCodes_IsValid(int value) {
     case 406:
     case 407:
     case 408:
+    case 409:
     case 500:
     case 501:
+    case 502:
       return true;
     default:
       return false;

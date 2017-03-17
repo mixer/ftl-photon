@@ -94,20 +94,22 @@ enum StatusCodes {
   BAD_REQUEST = 400,
   UNAUTHORIZED = 401,
   OLD_VERSION = 402,
-  AUDIO_SSRC_COLLISION = 403,
-  VIDEO_SSRC_COLLISION = 404,
-  INVALID_STREAM_KEY = 405,
-  CHANNEL_IN_USE = 406,
-  REGION_UNSUPPORTED = 407,
-  NO_MEDIA_TIMEOUT = 408,
+  NO_RESPONSE = 403,
+  AUDIO_SSRC_COLLISION = 404,
+  VIDEO_SSRC_COLLISION = 405,
+  INVALID_STREAM_KEY = 406,
+  CHANNEL_IN_USE = 407,
+  REGION_UNSUPPORTED = 408,
+  NO_MEDIA_TIMEOUT = 409,
   INTERNAL_SERVER_ERROR = 500,
   INTERNAL_COMMAND_ERROR = 501,
+  INTERNAL_LOCAL_ERROR = 502,
   StatusCodes_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   StatusCodes_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool StatusCodes_IsValid(int value);
 const StatusCodes StatusCodes_MIN = UNKNOWN;
-const StatusCodes StatusCodes_MAX = INTERNAL_COMMAND_ERROR;
+const StatusCodes StatusCodes_MAX = INTERNAL_LOCAL_ERROR;
 const int StatusCodes_ARRAYSIZE = StatusCodes_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* StatusCodes_descriptor();
