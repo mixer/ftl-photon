@@ -1,2 +1,2 @@
-# ftl-photon
-A protobuf based communication protocol for FTL
+# ftl-protobuf
+Protobuf Definitions for Beam's FTL Protocol
