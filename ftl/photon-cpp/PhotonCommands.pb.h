@@ -284,6 +284,34 @@ class Connect : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
+  // string ChannelID = 2;
+  void clear_channelid();
+  static const int kChannelIDFieldNumber = 2;
+  const ::std::string& channelid() const;
+  void set_channelid(const ::std::string& value);
+  #if LANG_CXX11
+  void set_channelid(::std::string&& value);
+  #endif
+  void set_channelid(const char* value);
+  void set_channelid(const char* value, size_t size);
+  ::std::string* mutable_channelid();
+  ::std::string* release_channelid();
+  void set_allocated_channelid(::std::string* channelid);
+
+  // string AuthKey = 3;
+  void clear_authkey();
+  static const int kAuthKeyFieldNumber = 3;
+  const ::std::string& authkey() const;
+  void set_authkey(const ::std::string& value);
+  #if LANG_CXX11
+  void set_authkey(::std::string&& value);
+  #endif
+  void set_authkey(const char* value);
+  void set_authkey(const char* value, size_t size);
+  ::std::string* mutable_authkey();
+  ::std::string* release_authkey();
+  void set_allocated_authkey(::std::string* authkey);
+
   // .Photon.Commands.ProtocolVersion ClientProtocolVersion = 1;
   void clear_clientprotocolversion();
   static const int kClientProtocolVersionFieldNumber = 1;
@@ -294,6 +322,8 @@ class Connect : public ::google::protobuf::Message /* @@protoc_insertion_point(c
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr channelid_;
+  ::google::protobuf::internal::ArenaStringPtr authkey_;
   int clientprotocolversion_;
   mutable int _cached_size_;
   friend struct  protobuf_PhotonCommands_2eproto::TableStruct;
@@ -367,9 +397,9 @@ class Connect_Response : public ::google::protobuf::Message /* @@protoc_insertio
 
   // accessors -------------------------------------------------------
 
-  // string HmacKey = 3;
+  // string HmacKey = 2;
   void clear_hmackey();
-  static const int kHmacKeyFieldNumber = 3;
+  static const int kHmacKeyFieldNumber = 2;
   const ::std::string& hmackey() const;
   void set_hmackey(const ::std::string& value);
   #if LANG_CXX11
@@ -475,6 +505,110 @@ inline void Connect::set_clientprotocolversion(::Photon::Commands::ProtocolVersi
   // @@protoc_insertion_point(field_set:Photon.Commands.Connect.ClientProtocolVersion)
 }
 
+// string ChannelID = 2;
+inline void Connect::clear_channelid() {
+  channelid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Connect::channelid() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.Connect.ChannelID)
+  return channelid_.GetNoArena();
+}
+inline void Connect::set_channelid(const ::std::string& value) {
+  
+  channelid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Photon.Commands.Connect.ChannelID)
+}
+#if LANG_CXX11
+inline void Connect::set_channelid(::std::string&& value) {
+  
+  channelid_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Photon.Commands.Connect.ChannelID)
+}
+#endif
+inline void Connect::set_channelid(const char* value) {
+  
+  channelid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Photon.Commands.Connect.ChannelID)
+}
+inline void Connect::set_channelid(const char* value, size_t size) {
+  
+  channelid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Photon.Commands.Connect.ChannelID)
+}
+inline ::std::string* Connect::mutable_channelid() {
+  
+  // @@protoc_insertion_point(field_mutable:Photon.Commands.Connect.ChannelID)
+  return channelid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Connect::release_channelid() {
+  // @@protoc_insertion_point(field_release:Photon.Commands.Connect.ChannelID)
+  
+  return channelid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Connect::set_allocated_channelid(::std::string* channelid) {
+  if (channelid != NULL) {
+    
+  } else {
+    
+  }
+  channelid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), channelid);
+  // @@protoc_insertion_point(field_set_allocated:Photon.Commands.Connect.ChannelID)
+}
+
+// string AuthKey = 3;
+inline void Connect::clear_authkey() {
+  authkey_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Connect::authkey() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.Connect.AuthKey)
+  return authkey_.GetNoArena();
+}
+inline void Connect::set_authkey(const ::std::string& value) {
+  
+  authkey_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Photon.Commands.Connect.AuthKey)
+}
+#if LANG_CXX11
+inline void Connect::set_authkey(::std::string&& value) {
+  
+  authkey_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Photon.Commands.Connect.AuthKey)
+}
+#endif
+inline void Connect::set_authkey(const char* value) {
+  
+  authkey_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Photon.Commands.Connect.AuthKey)
+}
+inline void Connect::set_authkey(const char* value, size_t size) {
+  
+  authkey_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Photon.Commands.Connect.AuthKey)
+}
+inline ::std::string* Connect::mutable_authkey() {
+  
+  // @@protoc_insertion_point(field_mutable:Photon.Commands.Connect.AuthKey)
+  return authkey_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Connect::release_authkey() {
+  // @@protoc_insertion_point(field_release:Photon.Commands.Connect.AuthKey)
+  
+  return authkey_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Connect::set_allocated_authkey(::std::string* authkey) {
+  if (authkey != NULL) {
+    
+  } else {
+    
+  }
+  authkey_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), authkey);
+  // @@protoc_insertion_point(field_set_allocated:Photon.Commands.Connect.AuthKey)
+}
+
 // -------------------------------------------------------------------
 
 // Connect_Response
@@ -493,7 +627,7 @@ inline void Connect_Response::set_serverprotocolversion(::Photon::Commands::Prot
   // @@protoc_insertion_point(field_set:Photon.Commands.Connect_Response.ServerProtocolVersion)
 }
 
-// string HmacKey = 3;
+// string HmacKey = 2;
 inline void Connect_Response::clear_hmackey() {
   hmackey_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }

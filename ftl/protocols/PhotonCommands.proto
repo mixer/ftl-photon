@@ -35,11 +35,24 @@ message PhotonWrapper
   google.protobuf.Any Command = 15;
 }
 
-message Connect {
+message Connect 
+{
   ProtocolVersion ClientProtocolVersion = 1;
 }
 
-message Connect_Response {
+message Connect_Response 
+{
   ProtocolVersion ServerProtocolVersion = 1;
   string HmacKey = 2;
+}
+
+message Authenticate 
+{
+  string ChannelId = 1;
+  string AuthKey = 2;
+}
+
+message Authenticate_Response
+{
+
 }
