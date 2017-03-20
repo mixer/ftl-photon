@@ -67,7 +67,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Connect_Response, serverprotocolversion_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Connect_Response, telemetryid_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Connect_Response, sessionid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Connect_Response, hmackey_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Authenticate, _internal_metadata_),
@@ -219,40 +219,40 @@ void AddDescriptorsImpl() {
       "s.StatusCodes\022%\n\007Command\030\017 \001(\0132\024.google."
       "protobuf.Any\"J\n\007Connect\022\?\n\025ClientProtoco"
       "lVersion\030\001 \001(\0162 .Photon.Commands.Protoco"
-      "lVersion\"y\n\020Connect_Response\022\?\n\025ServerPr"
+      "lVersion\"w\n\020Connect_Response\022\?\n\025ServerPr"
       "otocolVersion\030\001 \001(\0162 .Photon.Commands.Pr"
-      "otocolVersion\022\023\n\013TelemetryId\030\002 \001(\004\022\017\n\007Hm"
-      "acKey\030\003 \001(\t\"2\n\014Authenticate\022\021\n\tChannelId"
-      "\030\001 \001(\r\022\017\n\007AuthKey\030\002 \001(\t\"\027\n\025Authenticate_"
-      "Response\"\223\002\n\013StartStream\022\022\n\nVendorName\030\001"
-      " \001(\t\022\025\n\rVendorVersion\030\002 \001(\t\022\020\n\010HasVideo\030"
-      "\n \001(\010\022\022\n\nVideoCodec\030\013 \001(\t\022\023\n\013VideoHeight"
-      "\030\014 \001(\r\022\022\n\nVideoWidth\030\r \001(\r\022\030\n\020VideoPaylo"
-      "adType\030\016 \001(\r\022\027\n\017VideoIngestSSRC\030\017 \001(\r\022\020\n"
-      "\010HasAudio\030\036 \001(\010\022\022\n\nAudioCodec\030\037 \001(\t\022\030\n\020A"
-      "udioPayloadType\030  \001(\r\022\027\n\017AudioIngestSSRC"
-      "\030! \001(\r\"*\n\024StreamStart_Response\022\022\n\nIngest"
-      "Port\030\001 \001(\r\"\013\n\tHeartbeat\"\024\n\022Heartbeat_Res"
-      "ponse\"@\n\nDisconnect\0222\n\006Reason\030\001 \001(\0162\".Ph"
-      "oton.Commands.DisconnectReasons*#\n\017Proto"
-      "colVersion\022\010\n\004NONE\020\000\022\006\n\002V1\020\001*\251\002\n\013StatusC"
-      "odes\022\013\n\007UNKNOWN\020\000\022\007\n\002OK\020\310\001\022\t\n\004PING\020\311\001\022\020\n"
-      "\013BAD_REQUEST\020\220\003\022\021\n\014UNAUTHORIZED\020\221\003\022\020\n\013OL"
-      "D_VERSION\020\222\003\022\020\n\013NO_RESPONSE\020\223\003\022\027\n\022INVALI"
-      "D_STREAM_KEY\020\226\003\022\023\n\016CHANNEL_IN_USE\020\227\003\022\027\n\022"
-      "REGION_UNSUPPORTED\020\230\003\022\025\n\020NO_MEDIA_TIMEOU"
-      "T\020\231\003\022\032\n\025INTERNAL_SERVER_ERROR\020\364\003\022\033\n\026INTE"
-      "RNAL_COMMAND_ERROR\020\365\003\022\031\n\024INTERNAL_LOCAL_"
-      "ERROR\020\366\003*\335\001\n\021DisconnectReasons\022\026\n\022DISCON"
-      "NECT_UNKNOWN\020\000\022\021\n\014CLIENT_CLEAN\020\310\001\022\021\n\014ING"
-      "EST_CLEAN\020\311\001\022\031\n\024CLIENT_ERROR_UNKNOWN\020\254\002\022"
-      "\031\n\024CLIENT_ERROR_TIMEOUT\020\255\002\022\036\n\031CLIENT_ERR"
-      "OR_BAD_RESPONSE\020\256\002\022\031\n\024INGEST_ERROR_UNKNO"
-      "WN\020\220\003\022\031\n\024INGEST_ERROR_TIMEOUT\020\221\003B\nZ\010phot"
-      "ongob\006proto3"
+      "otocolVersion\022\021\n\tSessionId\030\002 \001(\004\022\017\n\007Hmac"
+      "Key\030\003 \001(\t\"2\n\014Authenticate\022\021\n\tChannelId\030\001"
+      " \001(\r\022\017\n\007AuthKey\030\002 \001(\t\"\027\n\025Authenticate_Re"
+      "sponse\"\223\002\n\013StartStream\022\022\n\nVendorName\030\001 \001"
+      "(\t\022\025\n\rVendorVersion\030\002 \001(\t\022\020\n\010HasVideo\030\n "
+      "\001(\010\022\022\n\nVideoCodec\030\013 \001(\t\022\023\n\013VideoHeight\030\014"
+      " \001(\r\022\022\n\nVideoWidth\030\r \001(\r\022\030\n\020VideoPayload"
+      "Type\030\016 \001(\r\022\027\n\017VideoIngestSSRC\030\017 \001(\r\022\020\n\010H"
+      "asAudio\030\036 \001(\010\022\022\n\nAudioCodec\030\037 \001(\t\022\030\n\020Aud"
+      "ioPayloadType\030  \001(\r\022\027\n\017AudioIngestSSRC\030!"
+      " \001(\r\"*\n\024StreamStart_Response\022\022\n\nIngestPo"
+      "rt\030\001 \001(\r\"\013\n\tHeartbeat\"\024\n\022Heartbeat_Respo"
+      "nse\"@\n\nDisconnect\0222\n\006Reason\030\001 \001(\0162\".Phot"
+      "on.Commands.DisconnectReasons*#\n\017Protoco"
+      "lVersion\022\010\n\004NONE\020\000\022\006\n\002V1\020\001*\251\002\n\013StatusCod"
+      "es\022\013\n\007UNKNOWN\020\000\022\007\n\002OK\020\310\001\022\t\n\004PING\020\311\001\022\020\n\013B"
+      "AD_REQUEST\020\220\003\022\021\n\014UNAUTHORIZED\020\221\003\022\020\n\013OLD_"
+      "VERSION\020\222\003\022\020\n\013NO_RESPONSE\020\223\003\022\027\n\022INVALID_"
+      "STREAM_KEY\020\226\003\022\023\n\016CHANNEL_IN_USE\020\227\003\022\027\n\022RE"
+      "GION_UNSUPPORTED\020\230\003\022\025\n\020NO_MEDIA_TIMEOUT\020"
+      "\231\003\022\032\n\025INTERNAL_SERVER_ERROR\020\364\003\022\033\n\026INTERN"
+      "AL_COMMAND_ERROR\020\365\003\022\031\n\024INTERNAL_LOCAL_ER"
+      "ROR\020\366\003*\335\001\n\021DisconnectReasons\022\026\n\022DISCONNE"
+      "CT_UNKNOWN\020\000\022\021\n\014CLIENT_CLEAN\020\310\001\022\021\n\014INGES"
+      "T_CLEAN\020\311\001\022\031\n\024CLIENT_ERROR_UNKNOWN\020\254\002\022\031\n"
+      "\024CLIENT_ERROR_TIMEOUT\020\255\002\022\036\n\031CLIENT_ERROR"
+      "_BAD_RESPONSE\020\256\002\022\031\n\024INGEST_ERROR_UNKNOWN"
+      "\020\220\003\022\031\n\024INGEST_ERROR_TIMEOUT\020\221\003B\nZ\010photon"
+      "gob\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1452);
+      descriptor, 1450);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "PhotonCommands.proto", &protobuf_RegisterTypes);
   ::google::protobuf::protobuf_google_2fprotobuf_2fany_2eproto::AddDescriptors();
@@ -879,7 +879,7 @@ void Connect::set_clientprotocolversion(::Photon::Commands::ProtocolVersion valu
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Connect_Response::kServerProtocolVersionFieldNumber;
-const int Connect_Response::kTelemetryIdFieldNumber;
+const int Connect_Response::kSessionIdFieldNumber;
 const int Connect_Response::kHmacKeyFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -900,16 +900,16 @@ Connect_Response::Connect_Response(const Connect_Response& from)
   if (from.hmackey().size() > 0) {
     hmackey_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.hmackey_);
   }
-  ::memcpy(&telemetryid_, &from.telemetryid_,
+  ::memcpy(&sessionid_, &from.sessionid_,
     reinterpret_cast<char*>(&serverprotocolversion_) -
-    reinterpret_cast<char*>(&telemetryid_) + sizeof(serverprotocolversion_));
+    reinterpret_cast<char*>(&sessionid_) + sizeof(serverprotocolversion_));
   // @@protoc_insertion_point(copy_constructor:Photon.Commands.Connect_Response)
 }
 
 void Connect_Response::SharedCtor() {
   hmackey_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&telemetryid_, 0, reinterpret_cast<char*>(&serverprotocolversion_) -
-    reinterpret_cast<char*>(&telemetryid_) + sizeof(serverprotocolversion_));
+  ::memset(&sessionid_, 0, reinterpret_cast<char*>(&serverprotocolversion_) -
+    reinterpret_cast<char*>(&sessionid_) + sizeof(serverprotocolversion_));
   _cached_size_ = 0;
 }
 
@@ -948,8 +948,8 @@ Connect_Response* Connect_Response::New(::google::protobuf::Arena* arena) const 
 void Connect_Response::Clear() {
 // @@protoc_insertion_point(message_clear_start:Photon.Commands.Connect_Response)
   hmackey_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&telemetryid_, 0, reinterpret_cast<char*>(&serverprotocolversion_) -
-    reinterpret_cast<char*>(&telemetryid_) + sizeof(serverprotocolversion_));
+  ::memset(&sessionid_, 0, reinterpret_cast<char*>(&serverprotocolversion_) -
+    reinterpret_cast<char*>(&sessionid_) + sizeof(serverprotocolversion_));
 }
 
 bool Connect_Response::MergePartialFromCodedStream(
@@ -976,13 +976,13 @@ bool Connect_Response::MergePartialFromCodedStream(
         break;
       }
 
-      // uint64 TelemetryId = 2;
+      // uint64 SessionId = 2;
       case 2: {
         if (tag == 16u) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &telemetryid_)));
+                 input, &sessionid_)));
         } else {
           goto handle_unusual;
         }
@@ -1034,9 +1034,9 @@ void Connect_Response::SerializeWithCachedSizes(
       1, this->serverprotocolversion(), output);
   }
 
-  // uint64 TelemetryId = 2;
-  if (this->telemetryid() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->telemetryid(), output);
+  // uint64 SessionId = 2;
+  if (this->sessionid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->sessionid(), output);
   }
 
   // string HmacKey = 3;
@@ -1062,9 +1062,9 @@ void Connect_Response::SerializeWithCachedSizes(
       1, this->serverprotocolversion(), target);
   }
 
-  // uint64 TelemetryId = 2;
-  if (this->telemetryid() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->telemetryid(), target);
+  // uint64 SessionId = 2;
+  if (this->sessionid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->sessionid(), target);
   }
 
   // string HmacKey = 3;
@@ -1093,11 +1093,11 @@ size_t Connect_Response::ByteSizeLong() const {
         this->hmackey());
   }
 
-  // uint64 TelemetryId = 2;
-  if (this->telemetryid() != 0) {
+  // uint64 SessionId = 2;
+  if (this->sessionid() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->telemetryid());
+        this->sessionid());
   }
 
   // .Photon.Commands.ProtocolVersion ServerProtocolVersion = 1;
@@ -1136,8 +1136,8 @@ void Connect_Response::MergeFrom(const Connect_Response& from) {
 
     hmackey_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.hmackey_);
   }
-  if (from.telemetryid() != 0) {
-    set_telemetryid(from.telemetryid());
+  if (from.sessionid() != 0) {
+    set_sessionid(from.sessionid());
   }
   if (from.serverprotocolversion() != 0) {
     set_serverprotocolversion(from.serverprotocolversion());
@@ -1168,7 +1168,7 @@ void Connect_Response::Swap(Connect_Response* other) {
 }
 void Connect_Response::InternalSwap(Connect_Response* other) {
   hmackey_.Swap(&other->hmackey_);
-  std::swap(telemetryid_, other->telemetryid_);
+  std::swap(sessionid_, other->sessionid_);
   std::swap(serverprotocolversion_, other->serverprotocolversion_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -1195,18 +1195,18 @@ void Connect_Response::set_serverprotocolversion(::Photon::Commands::ProtocolVer
   // @@protoc_insertion_point(field_set:Photon.Commands.Connect_Response.ServerProtocolVersion)
 }
 
-// uint64 TelemetryId = 2;
-void Connect_Response::clear_telemetryid() {
-  telemetryid_ = GOOGLE_ULONGLONG(0);
+// uint64 SessionId = 2;
+void Connect_Response::clear_sessionid() {
+  sessionid_ = GOOGLE_ULONGLONG(0);
 }
-::google::protobuf::uint64 Connect_Response::telemetryid() const {
-  // @@protoc_insertion_point(field_get:Photon.Commands.Connect_Response.TelemetryId)
-  return telemetryid_;
+::google::protobuf::uint64 Connect_Response::sessionid() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.Connect_Response.SessionId)
+  return sessionid_;
 }
-void Connect_Response::set_telemetryid(::google::protobuf::uint64 value) {
+void Connect_Response::set_sessionid(::google::protobuf::uint64 value) {
   
-  telemetryid_ = value;
-  // @@protoc_insertion_point(field_set:Photon.Commands.Connect_Response.TelemetryId)
+  sessionid_ = value;
+  // @@protoc_insertion_point(field_set:Photon.Commands.Connect_Response.SessionId)
 }
 
 // string HmacKey = 3;

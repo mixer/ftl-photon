@@ -427,11 +427,11 @@ class Connect_Response : public ::google::protobuf::Message /* @@protoc_insertio
   ::std::string* release_hmackey();
   void set_allocated_hmackey(::std::string* hmackey);
 
-  // uint64 TelemetryId = 2;
-  void clear_telemetryid();
-  static const int kTelemetryIdFieldNumber = 2;
-  ::google::protobuf::uint64 telemetryid() const;
-  void set_telemetryid(::google::protobuf::uint64 value);
+  // uint64 SessionId = 2;
+  void clear_sessionid();
+  static const int kSessionIdFieldNumber = 2;
+  ::google::protobuf::uint64 sessionid() const;
+  void set_sessionid(::google::protobuf::uint64 value);
 
   // .Photon.Commands.ProtocolVersion ServerProtocolVersion = 1;
   void clear_serverprotocolversion();
@@ -444,7 +444,7 @@ class Connect_Response : public ::google::protobuf::Message /* @@protoc_insertio
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr hmackey_;
-  ::google::protobuf::uint64 telemetryid_;
+  ::google::protobuf::uint64 sessionid_;
   int serverprotocolversion_;
   mutable int _cached_size_;
   friend struct  protobuf_PhotonCommands_2eproto::TableStruct;
@@ -1230,18 +1230,18 @@ inline void Connect_Response::set_serverprotocolversion(::Photon::Commands::Prot
   // @@protoc_insertion_point(field_set:Photon.Commands.Connect_Response.ServerProtocolVersion)
 }
 
-// uint64 TelemetryId = 2;
-inline void Connect_Response::clear_telemetryid() {
-  telemetryid_ = GOOGLE_ULONGLONG(0);
+// uint64 SessionId = 2;
+inline void Connect_Response::clear_sessionid() {
+  sessionid_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 Connect_Response::telemetryid() const {
-  // @@protoc_insertion_point(field_get:Photon.Commands.Connect_Response.TelemetryId)
-  return telemetryid_;
+inline ::google::protobuf::uint64 Connect_Response::sessionid() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.Connect_Response.SessionId)
+  return sessionid_;
 }
-inline void Connect_Response::set_telemetryid(::google::protobuf::uint64 value) {
+inline void Connect_Response::set_sessionid(::google::protobuf::uint64 value) {
   
-  telemetryid_ = value;
-  // @@protoc_insertion_point(field_set:Photon.Commands.Connect_Response.TelemetryId)
+  sessionid_ = value;
+  // @@protoc_insertion_point(field_set:Photon.Commands.Connect_Response.SessionId)
 }
 
 // string HmacKey = 3;

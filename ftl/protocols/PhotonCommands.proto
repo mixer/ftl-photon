@@ -54,7 +54,7 @@ message Connect
 message Connect_Response 
 {
   ProtocolVersion ServerProtocolVersion = 1;
-  uint64 TelemetryId = 2;
+  uint64 SessionId = 2;
   string HmacKey = 3;
 }
 
