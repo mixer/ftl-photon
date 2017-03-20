@@ -221,7 +221,7 @@ void AddDescriptorsImpl() {
       "lVersion\030\001 \001(\0162 .Photon.Commands.Protoco"
       "lVersion\"y\n\020Connect_Response\022\?\n\025ServerPr"
       "otocolVersion\030\001 \001(\0162 .Photon.Commands.Pr"
-      "otocolVersion\022\023\n\013TelemetryId\030\002 \001(\t\022\017\n\007Hm"
+      "otocolVersion\022\023\n\013TelemetryId\030\002 \001(\004\022\017\n\007Hm"
       "acKey\030\003 \001(\t\"2\n\014Authenticate\022\021\n\tChannelId"
       "\030\001 \001(\r\022\017\n\007AuthKey\030\002 \001(\t\"\027\n\025Authenticate_"
       "Response\"\223\002\n\013StartStream\022\022\n\nVendorName\030\001"
@@ -896,22 +896,20 @@ Connect_Response::Connect_Response(const Connect_Response& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  telemetryid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.telemetryid().size() > 0) {
-    telemetryid_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.telemetryid_);
-  }
   hmackey_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.hmackey().size() > 0) {
     hmackey_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.hmackey_);
   }
-  serverprotocolversion_ = from.serverprotocolversion_;
+  ::memcpy(&telemetryid_, &from.telemetryid_,
+    reinterpret_cast<char*>(&serverprotocolversion_) -
+    reinterpret_cast<char*>(&telemetryid_) + sizeof(serverprotocolversion_));
   // @@protoc_insertion_point(copy_constructor:Photon.Commands.Connect_Response)
 }
 
 void Connect_Response::SharedCtor() {
-  telemetryid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   hmackey_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  serverprotocolversion_ = 0;
+  ::memset(&telemetryid_, 0, reinterpret_cast<char*>(&serverprotocolversion_) -
+    reinterpret_cast<char*>(&telemetryid_) + sizeof(serverprotocolversion_));
   _cached_size_ = 0;
 }
 
@@ -921,7 +919,6 @@ Connect_Response::~Connect_Response() {
 }
 
 void Connect_Response::SharedDtor() {
-  telemetryid_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   hmackey_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -950,9 +947,9 @@ Connect_Response* Connect_Response::New(::google::protobuf::Arena* arena) const 
 
 void Connect_Response::Clear() {
 // @@protoc_insertion_point(message_clear_start:Photon.Commands.Connect_Response)
-  telemetryid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   hmackey_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  serverprotocolversion_ = 0;
+  ::memset(&telemetryid_, 0, reinterpret_cast<char*>(&serverprotocolversion_) -
+    reinterpret_cast<char*>(&telemetryid_) + sizeof(serverprotocolversion_));
 }
 
 bool Connect_Response::MergePartialFromCodedStream(
@@ -979,15 +976,13 @@ bool Connect_Response::MergePartialFromCodedStream(
         break;
       }
 
-      // string TelemetryId = 2;
+      // uint64 TelemetryId = 2;
       case 2: {
-        if (tag == 18u) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_telemetryid()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->telemetryid().data(), this->telemetryid().length(),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Photon.Commands.Connect_Response.TelemetryId"));
+        if (tag == 16u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &telemetryid_)));
         } else {
           goto handle_unusual;
         }
@@ -1039,14 +1034,9 @@ void Connect_Response::SerializeWithCachedSizes(
       1, this->serverprotocolversion(), output);
   }
 
-  // string TelemetryId = 2;
-  if (this->telemetryid().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->telemetryid().data(), this->telemetryid().length(),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Photon.Commands.Connect_Response.TelemetryId");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->telemetryid(), output);
+  // uint64 TelemetryId = 2;
+  if (this->telemetryid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->telemetryid(), output);
   }
 
   // string HmacKey = 3;
@@ -1072,15 +1062,9 @@ void Connect_Response::SerializeWithCachedSizes(
       1, this->serverprotocolversion(), target);
   }
 
-  // string TelemetryId = 2;
-  if (this->telemetryid().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->telemetryid().data(), this->telemetryid().length(),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Photon.Commands.Connect_Response.TelemetryId");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->telemetryid(), target);
+  // uint64 TelemetryId = 2;
+  if (this->telemetryid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->telemetryid(), target);
   }
 
   // string HmacKey = 3;
@@ -1102,18 +1086,18 @@ size_t Connect_Response::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:Photon.Commands.Connect_Response)
   size_t total_size = 0;
 
-  // string TelemetryId = 2;
-  if (this->telemetryid().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->telemetryid());
-  }
-
   // string HmacKey = 3;
   if (this->hmackey().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->hmackey());
+  }
+
+  // uint64 TelemetryId = 2;
+  if (this->telemetryid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->telemetryid());
   }
 
   // .Photon.Commands.ProtocolVersion ServerProtocolVersion = 1;
@@ -1148,13 +1132,12 @@ void Connect_Response::MergeFrom(const Connect_Response& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:Photon.Commands.Connect_Response)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.telemetryid().size() > 0) {
-
-    telemetryid_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.telemetryid_);
-  }
   if (from.hmackey().size() > 0) {
 
     hmackey_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.hmackey_);
+  }
+  if (from.telemetryid() != 0) {
+    set_telemetryid(from.telemetryid());
   }
   if (from.serverprotocolversion() != 0) {
     set_serverprotocolversion(from.serverprotocolversion());
@@ -1184,8 +1167,8 @@ void Connect_Response::Swap(Connect_Response* other) {
   InternalSwap(other);
 }
 void Connect_Response::InternalSwap(Connect_Response* other) {
-  telemetryid_.Swap(&other->telemetryid_);
   hmackey_.Swap(&other->hmackey_);
+  std::swap(telemetryid_, other->telemetryid_);
   std::swap(serverprotocolversion_, other->serverprotocolversion_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -1212,56 +1195,18 @@ void Connect_Response::set_serverprotocolversion(::Photon::Commands::ProtocolVer
   // @@protoc_insertion_point(field_set:Photon.Commands.Connect_Response.ServerProtocolVersion)
 }
 
-// string TelemetryId = 2;
+// uint64 TelemetryId = 2;
 void Connect_Response::clear_telemetryid() {
-  telemetryid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  telemetryid_ = GOOGLE_ULONGLONG(0);
 }
-const ::std::string& Connect_Response::telemetryid() const {
+::google::protobuf::uint64 Connect_Response::telemetryid() const {
   // @@protoc_insertion_point(field_get:Photon.Commands.Connect_Response.TelemetryId)
-  return telemetryid_.GetNoArena();
+  return telemetryid_;
 }
-void Connect_Response::set_telemetryid(const ::std::string& value) {
+void Connect_Response::set_telemetryid(::google::protobuf::uint64 value) {
   
-  telemetryid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  telemetryid_ = value;
   // @@protoc_insertion_point(field_set:Photon.Commands.Connect_Response.TelemetryId)
-}
-#if LANG_CXX11
-void Connect_Response::set_telemetryid(::std::string&& value) {
-  
-  telemetryid_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Photon.Commands.Connect_Response.TelemetryId)
-}
-#endif
-void Connect_Response::set_telemetryid(const char* value) {
-  
-  telemetryid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Photon.Commands.Connect_Response.TelemetryId)
-}
-void Connect_Response::set_telemetryid(const char* value, size_t size) {
-  
-  telemetryid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Photon.Commands.Connect_Response.TelemetryId)
-}
-::std::string* Connect_Response::mutable_telemetryid() {
-  
-  // @@protoc_insertion_point(field_mutable:Photon.Commands.Connect_Response.TelemetryId)
-  return telemetryid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-::std::string* Connect_Response::release_telemetryid() {
-  // @@protoc_insertion_point(field_release:Photon.Commands.Connect_Response.TelemetryId)
-  
-  return telemetryid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-void Connect_Response::set_allocated_telemetryid(::std::string* telemetryid) {
-  if (telemetryid != NULL) {
-    
-  } else {
-    
-  }
-  telemetryid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), telemetryid);
-  // @@protoc_insertion_point(field_set_allocated:Photon.Commands.Connect_Response.TelemetryId)
 }
 
 // string HmacKey = 3;

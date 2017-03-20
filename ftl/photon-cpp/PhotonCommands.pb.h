@@ -413,20 +413,6 @@ class Connect_Response : public ::google::protobuf::Message /* @@protoc_insertio
 
   // accessors -------------------------------------------------------
 
-  // string TelemetryId = 2;
-  void clear_telemetryid();
-  static const int kTelemetryIdFieldNumber = 2;
-  const ::std::string& telemetryid() const;
-  void set_telemetryid(const ::std::string& value);
-  #if LANG_CXX11
-  void set_telemetryid(::std::string&& value);
-  #endif
-  void set_telemetryid(const char* value);
-  void set_telemetryid(const char* value, size_t size);
-  ::std::string* mutable_telemetryid();
-  ::std::string* release_telemetryid();
-  void set_allocated_telemetryid(::std::string* telemetryid);
-
   // string HmacKey = 3;
   void clear_hmackey();
   static const int kHmacKeyFieldNumber = 3;
@@ -441,6 +427,12 @@ class Connect_Response : public ::google::protobuf::Message /* @@protoc_insertio
   ::std::string* release_hmackey();
   void set_allocated_hmackey(::std::string* hmackey);
 
+  // uint64 TelemetryId = 2;
+  void clear_telemetryid();
+  static const int kTelemetryIdFieldNumber = 2;
+  ::google::protobuf::uint64 telemetryid() const;
+  void set_telemetryid(::google::protobuf::uint64 value);
+
   // .Photon.Commands.ProtocolVersion ServerProtocolVersion = 1;
   void clear_serverprotocolversion();
   static const int kServerProtocolVersionFieldNumber = 1;
@@ -451,8 +443,8 @@ class Connect_Response : public ::google::protobuf::Message /* @@protoc_insertio
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr telemetryid_;
   ::google::protobuf::internal::ArenaStringPtr hmackey_;
+  ::google::protobuf::uint64 telemetryid_;
   int serverprotocolversion_;
   mutable int _cached_size_;
   friend struct  protobuf_PhotonCommands_2eproto::TableStruct;
@@ -1238,56 +1230,18 @@ inline void Connect_Response::set_serverprotocolversion(::Photon::Commands::Prot
   // @@protoc_insertion_point(field_set:Photon.Commands.Connect_Response.ServerProtocolVersion)
 }
 
-// string TelemetryId = 2;
+// uint64 TelemetryId = 2;
 inline void Connect_Response::clear_telemetryid() {
-  telemetryid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  telemetryid_ = GOOGLE_ULONGLONG(0);
 }
-inline const ::std::string& Connect_Response::telemetryid() const {
+inline ::google::protobuf::uint64 Connect_Response::telemetryid() const {
   // @@protoc_insertion_point(field_get:Photon.Commands.Connect_Response.TelemetryId)
-  return telemetryid_.GetNoArena();
+  return telemetryid_;
 }
-inline void Connect_Response::set_telemetryid(const ::std::string& value) {
+inline void Connect_Response::set_telemetryid(::google::protobuf::uint64 value) {
   
-  telemetryid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  telemetryid_ = value;
   // @@protoc_insertion_point(field_set:Photon.Commands.Connect_Response.TelemetryId)
-}
-#if LANG_CXX11
-inline void Connect_Response::set_telemetryid(::std::string&& value) {
-  
-  telemetryid_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Photon.Commands.Connect_Response.TelemetryId)
-}
-#endif
-inline void Connect_Response::set_telemetryid(const char* value) {
-  
-  telemetryid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Photon.Commands.Connect_Response.TelemetryId)
-}
-inline void Connect_Response::set_telemetryid(const char* value, size_t size) {
-  
-  telemetryid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Photon.Commands.Connect_Response.TelemetryId)
-}
-inline ::std::string* Connect_Response::mutable_telemetryid() {
-  
-  // @@protoc_insertion_point(field_mutable:Photon.Commands.Connect_Response.TelemetryId)
-  return telemetryid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* Connect_Response::release_telemetryid() {
-  // @@protoc_insertion_point(field_release:Photon.Commands.Connect_Response.TelemetryId)
-  
-  return telemetryid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void Connect_Response::set_allocated_telemetryid(::std::string* telemetryid) {
-  if (telemetryid != NULL) {
-    
-  } else {
-    
-  }
-  telemetryid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), telemetryid);
-  // @@protoc_insertion_point(field_set_allocated:Photon.Commands.Connect_Response.TelemetryId)
 }
 
 // string HmacKey = 3;
