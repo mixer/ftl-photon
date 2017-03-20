@@ -61,6 +61,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Connect_Response, serverprotocolversion_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Connect_Response, telemetryid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Connect_Response, hmackey_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Authenticate, _internal_metadata_),
@@ -99,10 +100,10 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 0, -1, sizeof(PhotonWrapper)},
   { 6, -1, sizeof(Connect)},
   { 11, -1, sizeof(Connect_Response)},
-  { 17, -1, sizeof(Authenticate)},
-  { 23, -1, sizeof(Authenticate_Response)},
-  { 27, -1, sizeof(StartStream)},
-  { 43, -1, sizeof(StreamStart_Response)},
+  { 18, -1, sizeof(Authenticate)},
+  { 24, -1, sizeof(Authenticate_Response)},
+  { 28, -1, sizeof(StartStream)},
+  { 44, -1, sizeof(StreamStart_Response)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -184,31 +185,32 @@ void AddDescriptorsImpl() {
       "s.StatusCodes\022%\n\007Command\030\017 \001(\0132\024.google."
       "protobuf.Any\"J\n\007Connect\022\?\n\025ClientProtoco"
       "lVersion\030\001 \001(\0162 .Photon.Commands.Protoco"
-      "lVersion\"d\n\020Connect_Response\022\?\n\025ServerPr"
+      "lVersion\"y\n\020Connect_Response\022\?\n\025ServerPr"
       "otocolVersion\030\001 \001(\0162 .Photon.Commands.Pr"
-      "otocolVersion\022\017\n\007HmacKey\030\002 \001(\t\"2\n\014Authen"
-      "ticate\022\021\n\tChannelId\030\001 \001(\r\022\017\n\007AuthKey\030\002 \001"
-      "(\t\"\027\n\025Authenticate_Response\"\223\002\n\013StartStr"
-      "eam\022\022\n\nVendorName\030\001 \001(\t\022\025\n\rVendorVersion"
-      "\030\002 \001(\t\022\020\n\010HasVideo\030\n \001(\010\022\022\n\nVideoCodec\030\013"
-      " \001(\t\022\023\n\013VideoHeight\030\014 \001(\r\022\022\n\nVideoWidth\030"
-      "\r \001(\r\022\030\n\020VideoPayloadType\030\016 \001(\r\022\027\n\017Video"
-      "IngestSSRC\030\017 \001(\r\022\020\n\010HasAudio\030\036 \001(\010\022\022\n\nAu"
-      "dioCodec\030\037 \001(\t\022\030\n\020AudioPayloadType\030  \001(\r"
-      "\022\027\n\017AudioIngestSSRC\030! \001(\r\"*\n\024StreamStart"
-      "_Response\022\022\n\nIngestPort\030\001 \001(\r*#\n\017Protoco"
-      "lVersion\022\010\n\004NONE\020\000\022\006\n\002V1\020\001*\220\002\n\013StatusCod"
-      "es\022\013\n\007UNKNOWN\020\000\022\007\n\002OK\020\310\001\022\t\n\004PING\020\311\001\022\020\n\013B"
-      "AD_REQUEST\020\220\003\022\021\n\014UNAUTHORIZED\020\221\003\022\020\n\013OLD_"
-      "VERSION\020\222\003\022\020\n\013NO_RESPONSE\020\223\003\022\027\n\022INVALID_"
-      "STREAM_KEY\020\226\003\022\023\n\016CHANNEL_IN_USE\020\227\003\022\025\n\020NO"
-      "_MEDIA_TIMEOUT\020\231\003\022\032\n\025INTERNAL_SERVER_ERR"
-      "OR\020\364\003\022\033\n\026INTERNAL_COMMAND_ERROR\020\365\003\022\031\n\024IN"
-      "TERNAL_LOCAL_ERROR\020\366\003B\nZ\010photongob\006proto"
-      "3"
+      "otocolVersion\022\023\n\013TelemetryId\030\002 \001(\t\022\017\n\007Hm"
+      "acKey\030\003 \001(\t\"2\n\014Authenticate\022\021\n\tChannelId"
+      "\030\001 \001(\r\022\017\n\007AuthKey\030\002 \001(\t\"\027\n\025Authenticate_"
+      "Response\"\223\002\n\013StartStream\022\022\n\nVendorName\030\001"
+      " \001(\t\022\025\n\rVendorVersion\030\002 \001(\t\022\020\n\010HasVideo\030"
+      "\n \001(\010\022\022\n\nVideoCodec\030\013 \001(\t\022\023\n\013VideoHeight"
+      "\030\014 \001(\r\022\022\n\nVideoWidth\030\r \001(\r\022\030\n\020VideoPaylo"
+      "adType\030\016 \001(\r\022\027\n\017VideoIngestSSRC\030\017 \001(\r\022\020\n"
+      "\010HasAudio\030\036 \001(\010\022\022\n\nAudioCodec\030\037 \001(\t\022\030\n\020A"
+      "udioPayloadType\030  \001(\r\022\027\n\017AudioIngestSSRC"
+      "\030! \001(\r\"*\n\024StreamStart_Response\022\022\n\nIngest"
+      "Port\030\001 \001(\r*#\n\017ProtocolVersion\022\010\n\004NONE\020\000\022"
+      "\006\n\002V1\020\001*\251\002\n\013StatusCodes\022\013\n\007UNKNOWN\020\000\022\007\n\002"
+      "OK\020\310\001\022\t\n\004PING\020\311\001\022\020\n\013BAD_REQUEST\020\220\003\022\021\n\014UN"
+      "AUTHORIZED\020\221\003\022\020\n\013OLD_VERSION\020\222\003\022\020\n\013NO_RE"
+      "SPONSE\020\223\003\022\027\n\022INVALID_STREAM_KEY\020\226\003\022\023\n\016CH"
+      "ANNEL_IN_USE\020\227\003\022\027\n\022REGION_UNSUPPORTED\020\230\003"
+      "\022\025\n\020NO_MEDIA_TIMEOUT\020\231\003\022\032\n\025INTERNAL_SERV"
+      "ER_ERROR\020\364\003\022\033\n\026INTERNAL_COMMAND_ERROR\020\365\003"
+      "\022\031\n\024INTERNAL_LOCAL_ERROR\020\366\003B\nZ\010photongob"
+      "\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1081);
+      descriptor, 1127);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "PhotonCommands.proto", &protobuf_RegisterTypes);
   ::google::protobuf::protobuf_google_2fprotobuf_2fany_2eproto::AddDescriptors();
@@ -257,6 +259,7 @@ bool StatusCodes_IsValid(int value) {
     case 403:
     case 406:
     case 407:
+    case 408:
     case 409:
     case 500:
     case 501:
@@ -814,6 +817,7 @@ void Connect::set_clientprotocolversion(::Photon::Commands::ProtocolVersion valu
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Connect_Response::kServerProtocolVersionFieldNumber;
+const int Connect_Response::kTelemetryIdFieldNumber;
 const int Connect_Response::kHmacKeyFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -830,6 +834,10 @@ Connect_Response::Connect_Response(const Connect_Response& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  telemetryid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.telemetryid().size() > 0) {
+    telemetryid_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.telemetryid_);
+  }
   hmackey_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.hmackey().size() > 0) {
     hmackey_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.hmackey_);
@@ -839,6 +847,7 @@ Connect_Response::Connect_Response(const Connect_Response& from)
 }
 
 void Connect_Response::SharedCtor() {
+  telemetryid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   hmackey_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   serverprotocolversion_ = 0;
   _cached_size_ = 0;
@@ -850,6 +859,7 @@ Connect_Response::~Connect_Response() {
 }
 
 void Connect_Response::SharedDtor() {
+  telemetryid_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   hmackey_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -878,6 +888,7 @@ Connect_Response* Connect_Response::New(::google::protobuf::Arena* arena) const 
 
 void Connect_Response::Clear() {
 // @@protoc_insertion_point(message_clear_start:Photon.Commands.Connect_Response)
+  telemetryid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   hmackey_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   serverprotocolversion_ = 0;
 }
@@ -906,9 +917,24 @@ bool Connect_Response::MergePartialFromCodedStream(
         break;
       }
 
-      // string HmacKey = 2;
+      // string TelemetryId = 2;
       case 2: {
         if (tag == 18u) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_telemetryid()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->telemetryid().data(), this->telemetryid().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Photon.Commands.Connect_Response.TelemetryId"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string HmacKey = 3;
+      case 3: {
+        if (tag == 26u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_hmackey()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -951,14 +977,24 @@ void Connect_Response::SerializeWithCachedSizes(
       1, this->serverprotocolversion(), output);
   }
 
-  // string HmacKey = 2;
+  // string TelemetryId = 2;
+  if (this->telemetryid().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->telemetryid().data(), this->telemetryid().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Photon.Commands.Connect_Response.TelemetryId");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->telemetryid(), output);
+  }
+
+  // string HmacKey = 3;
   if (this->hmackey().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->hmackey().data(), this->hmackey().length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "Photon.Commands.Connect_Response.HmacKey");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->hmackey(), output);
+      3, this->hmackey(), output);
   }
 
   // @@protoc_insertion_point(serialize_end:Photon.Commands.Connect_Response)
@@ -974,7 +1010,18 @@ void Connect_Response::SerializeWithCachedSizes(
       1, this->serverprotocolversion(), target);
   }
 
-  // string HmacKey = 2;
+  // string TelemetryId = 2;
+  if (this->telemetryid().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->telemetryid().data(), this->telemetryid().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Photon.Commands.Connect_Response.TelemetryId");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->telemetryid(), target);
+  }
+
+  // string HmacKey = 3;
   if (this->hmackey().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->hmackey().data(), this->hmackey().length(),
@@ -982,7 +1029,7 @@ void Connect_Response::SerializeWithCachedSizes(
       "Photon.Commands.Connect_Response.HmacKey");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->hmackey(), target);
+        3, this->hmackey(), target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:Photon.Commands.Connect_Response)
@@ -993,7 +1040,14 @@ size_t Connect_Response::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:Photon.Commands.Connect_Response)
   size_t total_size = 0;
 
-  // string HmacKey = 2;
+  // string TelemetryId = 2;
+  if (this->telemetryid().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->telemetryid());
+  }
+
+  // string HmacKey = 3;
   if (this->hmackey().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -1032,6 +1086,10 @@ void Connect_Response::MergeFrom(const Connect_Response& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:Photon.Commands.Connect_Response)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.telemetryid().size() > 0) {
+
+    telemetryid_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.telemetryid_);
+  }
   if (from.hmackey().size() > 0) {
 
     hmackey_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.hmackey_);
@@ -1064,6 +1122,7 @@ void Connect_Response::Swap(Connect_Response* other) {
   InternalSwap(other);
 }
 void Connect_Response::InternalSwap(Connect_Response* other) {
+  telemetryid_.Swap(&other->telemetryid_);
   hmackey_.Swap(&other->hmackey_);
   std::swap(serverprotocolversion_, other->serverprotocolversion_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -1091,7 +1150,59 @@ void Connect_Response::set_serverprotocolversion(::Photon::Commands::ProtocolVer
   // @@protoc_insertion_point(field_set:Photon.Commands.Connect_Response.ServerProtocolVersion)
 }
 
-// string HmacKey = 2;
+// string TelemetryId = 2;
+void Connect_Response::clear_telemetryid() {
+  telemetryid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+const ::std::string& Connect_Response::telemetryid() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.Connect_Response.TelemetryId)
+  return telemetryid_.GetNoArena();
+}
+void Connect_Response::set_telemetryid(const ::std::string& value) {
+  
+  telemetryid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Photon.Commands.Connect_Response.TelemetryId)
+}
+#if LANG_CXX11
+void Connect_Response::set_telemetryid(::std::string&& value) {
+  
+  telemetryid_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Photon.Commands.Connect_Response.TelemetryId)
+}
+#endif
+void Connect_Response::set_telemetryid(const char* value) {
+  
+  telemetryid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Photon.Commands.Connect_Response.TelemetryId)
+}
+void Connect_Response::set_telemetryid(const char* value, size_t size) {
+  
+  telemetryid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Photon.Commands.Connect_Response.TelemetryId)
+}
+::std::string* Connect_Response::mutable_telemetryid() {
+  
+  // @@protoc_insertion_point(field_mutable:Photon.Commands.Connect_Response.TelemetryId)
+  return telemetryid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* Connect_Response::release_telemetryid() {
+  // @@protoc_insertion_point(field_release:Photon.Commands.Connect_Response.TelemetryId)
+  
+  return telemetryid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void Connect_Response::set_allocated_telemetryid(::std::string* telemetryid) {
+  if (telemetryid != NULL) {
+    
+  } else {
+    
+  }
+  telemetryid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), telemetryid);
+  // @@protoc_insertion_point(field_set_allocated:Photon.Commands.Connect_Response.TelemetryId)
+}
+
+// string HmacKey = 3;
 void Connect_Response::clear_hmackey() {
   hmackey_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
