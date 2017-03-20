@@ -33,6 +33,10 @@ class StartStreamDefaultTypeInternal : public ::google::protobuf::internal::Expl
 } _StartStream_default_instance_;
 class StreamStart_ResponseDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<StreamStart_Response> {
 } _StreamStart_Response_default_instance_;
+class HeartbeatDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Heartbeat> {
+} _Heartbeat_default_instance_;
+class Heartbeat_ResponseDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Heartbeat_Response> {
+} _Heartbeat_Response_default_instance_;
 class DisconnectDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Disconnect> {
 } _Disconnect_default_instance_;
 
@@ -41,7 +45,7 @@ namespace protobuf_PhotonCommands_2eproto {
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[8];
+::google::protobuf::Metadata file_level_metadata[10];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[3];
 
 }  // namespace
@@ -97,6 +101,14 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   ~0u,  // no _oneof_case_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StreamStart_Response, ingestport_),
   ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Heartbeat, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Heartbeat_Response, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Disconnect, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -111,7 +123,9 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 24, -1, sizeof(Authenticate_Response)},
   { 28, -1, sizeof(StartStream)},
   { 44, -1, sizeof(StreamStart_Response)},
-  { 49, -1, sizeof(Disconnect)},
+  { 49, -1, sizeof(Heartbeat)},
+  { 53, -1, sizeof(Heartbeat_Response)},
+  { 57, -1, sizeof(Disconnect)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -122,6 +136,8 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_Authenticate_Response_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_StartStream_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_StreamStart_Response_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_Heartbeat_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_Heartbeat_Response_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_Disconnect_default_instance_),
 };
 
@@ -143,7 +159,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 8);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 10);
 }
 
 }  // namespace
@@ -163,8 +179,12 @@ void TableStruct::Shutdown() {
   delete file_level_metadata[5].reflection;
   _StreamStart_Response_default_instance_.Shutdown();
   delete file_level_metadata[6].reflection;
-  _Disconnect_default_instance_.Shutdown();
+  _Heartbeat_default_instance_.Shutdown();
   delete file_level_metadata[7].reflection;
+  _Heartbeat_Response_default_instance_.Shutdown();
+  delete file_level_metadata[8].reflection;
+  _Disconnect_default_instance_.Shutdown();
+  delete file_level_metadata[9].reflection;
 }
 
 void TableStruct::InitDefaultsImpl() {
@@ -179,6 +199,8 @@ void TableStruct::InitDefaultsImpl() {
   _Authenticate_Response_default_instance_.DefaultConstruct();
   _StartStream_default_instance_.DefaultConstruct();
   _StreamStart_Response_default_instance_.DefaultConstruct();
+  _Heartbeat_default_instance_.DefaultConstruct();
+  _Heartbeat_Response_default_instance_.DefaultConstruct();
   _Disconnect_default_instance_.DefaultConstruct();
   _PhotonWrapper_default_instance_.get_mutable()->command_ = const_cast< ::google::protobuf::Any*>(
       ::google::protobuf::Any::internal_default_instance());
@@ -210,26 +232,27 @@ void AddDescriptorsImpl() {
       "\010HasAudio\030\036 \001(\010\022\022\n\nAudioCodec\030\037 \001(\t\022\030\n\020A"
       "udioPayloadType\030  \001(\r\022\027\n\017AudioIngestSSRC"
       "\030! \001(\r\"*\n\024StreamStart_Response\022\022\n\nIngest"
-      "Port\030\001 \001(\r\"@\n\nDisconnect\0222\n\006Reason\030\001 \001(\016"
-      "2\".Photon.Commands.DisconnectReasons*#\n\017"
-      "ProtocolVersion\022\010\n\004NONE\020\000\022\006\n\002V1\020\001*\251\002\n\013St"
-      "atusCodes\022\013\n\007UNKNOWN\020\000\022\007\n\002OK\020\310\001\022\t\n\004PING\020"
-      "\311\001\022\020\n\013BAD_REQUEST\020\220\003\022\021\n\014UNAUTHORIZED\020\221\003\022"
-      "\020\n\013OLD_VERSION\020\222\003\022\020\n\013NO_RESPONSE\020\223\003\022\027\n\022I"
-      "NVALID_STREAM_KEY\020\226\003\022\023\n\016CHANNEL_IN_USE\020\227"
-      "\003\022\027\n\022REGION_UNSUPPORTED\020\230\003\022\025\n\020NO_MEDIA_T"
-      "IMEOUT\020\231\003\022\032\n\025INTERNAL_SERVER_ERROR\020\364\003\022\033\n"
-      "\026INTERNAL_COMMAND_ERROR\020\365\003\022\031\n\024INTERNAL_L"
-      "OCAL_ERROR\020\366\003*\335\001\n\021DisconnectReasons\022\026\n\022D"
-      "ISCONNECT_UNKNOWN\020\000\022\021\n\014CLIENT_CLEAN\020\310\001\022\021"
-      "\n\014INGEST_CLEAN\020\311\001\022\031\n\024CLIENT_ERROR_UNKNOW"
-      "N\020\254\002\022\031\n\024CLIENT_ERROR_TIMEOUT\020\255\002\022\036\n\031CLIEN"
-      "T_ERROR_BAD_RESPONSE\020\256\002\022\031\n\024INGEST_ERROR_"
-      "UNKNOWN\020\220\003\022\031\n\024INGEST_ERROR_TIMEOUT\020\221\003B\nZ"
-      "\010photongob\006proto3"
+      "Port\030\001 \001(\r\"\013\n\tHeartbeat\"\024\n\022Heartbeat_Res"
+      "ponse\"@\n\nDisconnect\0222\n\006Reason\030\001 \001(\0162\".Ph"
+      "oton.Commands.DisconnectReasons*#\n\017Proto"
+      "colVersion\022\010\n\004NONE\020\000\022\006\n\002V1\020\001*\251\002\n\013StatusC"
+      "odes\022\013\n\007UNKNOWN\020\000\022\007\n\002OK\020\310\001\022\t\n\004PING\020\311\001\022\020\n"
+      "\013BAD_REQUEST\020\220\003\022\021\n\014UNAUTHORIZED\020\221\003\022\020\n\013OL"
+      "D_VERSION\020\222\003\022\020\n\013NO_RESPONSE\020\223\003\022\027\n\022INVALI"
+      "D_STREAM_KEY\020\226\003\022\023\n\016CHANNEL_IN_USE\020\227\003\022\027\n\022"
+      "REGION_UNSUPPORTED\020\230\003\022\025\n\020NO_MEDIA_TIMEOU"
+      "T\020\231\003\022\032\n\025INTERNAL_SERVER_ERROR\020\364\003\022\033\n\026INTE"
+      "RNAL_COMMAND_ERROR\020\365\003\022\031\n\024INTERNAL_LOCAL_"
+      "ERROR\020\366\003*\335\001\n\021DisconnectReasons\022\026\n\022DISCON"
+      "NECT_UNKNOWN\020\000\022\021\n\014CLIENT_CLEAN\020\310\001\022\021\n\014ING"
+      "EST_CLEAN\020\311\001\022\031\n\024CLIENT_ERROR_UNKNOWN\020\254\002\022"
+      "\031\n\024CLIENT_ERROR_TIMEOUT\020\255\002\022\036\n\031CLIENT_ERR"
+      "OR_BAD_RESPONSE\020\256\002\022\031\n\024INGEST_ERROR_UNKNO"
+      "WN\020\220\003\022\031\n\024INGEST_ERROR_TIMEOUT\020\221\003B\nZ\010phot"
+      "ongob\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1417);
+      descriptor, 1452);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "PhotonCommands.proto", &protobuf_RegisterTypes);
   ::google::protobuf::protobuf_google_2fprotobuf_2fany_2eproto::AddDescriptors();
@@ -3024,6 +3047,342 @@ void StreamStart_Response::set_ingestport(::google::protobuf::uint32 value) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Heartbeat::Heartbeat()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_PhotonCommands_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Photon.Commands.Heartbeat)
+}
+Heartbeat::Heartbeat(const Heartbeat& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:Photon.Commands.Heartbeat)
+}
+
+void Heartbeat::SharedCtor() {
+  _cached_size_ = 0;
+}
+
+Heartbeat::~Heartbeat() {
+  // @@protoc_insertion_point(destructor:Photon.Commands.Heartbeat)
+  SharedDtor();
+}
+
+void Heartbeat::SharedDtor() {
+}
+
+void Heartbeat::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Heartbeat::descriptor() {
+  protobuf_PhotonCommands_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_PhotonCommands_2eproto::file_level_metadata[7].descriptor;
+}
+
+const Heartbeat& Heartbeat::default_instance() {
+  protobuf_PhotonCommands_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+Heartbeat* Heartbeat::New(::google::protobuf::Arena* arena) const {
+  Heartbeat* n = new Heartbeat;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void Heartbeat::Clear() {
+// @@protoc_insertion_point(message_clear_start:Photon.Commands.Heartbeat)
+}
+
+bool Heartbeat::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Photon.Commands.Heartbeat)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Photon.Commands.Heartbeat)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Photon.Commands.Heartbeat)
+  return false;
+#undef DO_
+}
+
+void Heartbeat::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Photon.Commands.Heartbeat)
+  // @@protoc_insertion_point(serialize_end:Photon.Commands.Heartbeat)
+}
+
+::google::protobuf::uint8* Heartbeat::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:Photon.Commands.Heartbeat)
+  // @@protoc_insertion_point(serialize_to_array_end:Photon.Commands.Heartbeat)
+  return target;
+}
+
+size_t Heartbeat::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Photon.Commands.Heartbeat)
+  size_t total_size = 0;
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Heartbeat::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Photon.Commands.Heartbeat)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Heartbeat* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const Heartbeat>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Photon.Commands.Heartbeat)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Photon.Commands.Heartbeat)
+    MergeFrom(*source);
+  }
+}
+
+void Heartbeat::MergeFrom(const Heartbeat& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Photon.Commands.Heartbeat)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+}
+
+void Heartbeat::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Photon.Commands.Heartbeat)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Heartbeat::CopyFrom(const Heartbeat& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Photon.Commands.Heartbeat)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Heartbeat::IsInitialized() const {
+  return true;
+}
+
+void Heartbeat::Swap(Heartbeat* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Heartbeat::InternalSwap(Heartbeat* other) {
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata Heartbeat::GetMetadata() const {
+  protobuf_PhotonCommands_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_PhotonCommands_2eproto::file_level_metadata[7];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// Heartbeat
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Heartbeat_Response::Heartbeat_Response()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_PhotonCommands_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Photon.Commands.Heartbeat_Response)
+}
+Heartbeat_Response::Heartbeat_Response(const Heartbeat_Response& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:Photon.Commands.Heartbeat_Response)
+}
+
+void Heartbeat_Response::SharedCtor() {
+  _cached_size_ = 0;
+}
+
+Heartbeat_Response::~Heartbeat_Response() {
+  // @@protoc_insertion_point(destructor:Photon.Commands.Heartbeat_Response)
+  SharedDtor();
+}
+
+void Heartbeat_Response::SharedDtor() {
+}
+
+void Heartbeat_Response::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Heartbeat_Response::descriptor() {
+  protobuf_PhotonCommands_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_PhotonCommands_2eproto::file_level_metadata[8].descriptor;
+}
+
+const Heartbeat_Response& Heartbeat_Response::default_instance() {
+  protobuf_PhotonCommands_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+Heartbeat_Response* Heartbeat_Response::New(::google::protobuf::Arena* arena) const {
+  Heartbeat_Response* n = new Heartbeat_Response;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void Heartbeat_Response::Clear() {
+// @@protoc_insertion_point(message_clear_start:Photon.Commands.Heartbeat_Response)
+}
+
+bool Heartbeat_Response::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Photon.Commands.Heartbeat_Response)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Photon.Commands.Heartbeat_Response)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Photon.Commands.Heartbeat_Response)
+  return false;
+#undef DO_
+}
+
+void Heartbeat_Response::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Photon.Commands.Heartbeat_Response)
+  // @@protoc_insertion_point(serialize_end:Photon.Commands.Heartbeat_Response)
+}
+
+::google::protobuf::uint8* Heartbeat_Response::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:Photon.Commands.Heartbeat_Response)
+  // @@protoc_insertion_point(serialize_to_array_end:Photon.Commands.Heartbeat_Response)
+  return target;
+}
+
+size_t Heartbeat_Response::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Photon.Commands.Heartbeat_Response)
+  size_t total_size = 0;
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Heartbeat_Response::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Photon.Commands.Heartbeat_Response)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Heartbeat_Response* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const Heartbeat_Response>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Photon.Commands.Heartbeat_Response)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Photon.Commands.Heartbeat_Response)
+    MergeFrom(*source);
+  }
+}
+
+void Heartbeat_Response::MergeFrom(const Heartbeat_Response& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Photon.Commands.Heartbeat_Response)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+}
+
+void Heartbeat_Response::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Photon.Commands.Heartbeat_Response)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Heartbeat_Response::CopyFrom(const Heartbeat_Response& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Photon.Commands.Heartbeat_Response)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Heartbeat_Response::IsInitialized() const {
+  return true;
+}
+
+void Heartbeat_Response::Swap(Heartbeat_Response* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Heartbeat_Response::InternalSwap(Heartbeat_Response* other) {
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata Heartbeat_Response::GetMetadata() const {
+  protobuf_PhotonCommands_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_PhotonCommands_2eproto::file_level_metadata[8];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// Heartbeat_Response
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Disconnect::kReasonFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -3064,7 +3423,7 @@ void Disconnect::SetCachedSize(int size) const {
 }
 const ::google::protobuf::Descriptor* Disconnect::descriptor() {
   protobuf_PhotonCommands_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_PhotonCommands_2eproto::file_level_metadata[7].descriptor;
+  return protobuf_PhotonCommands_2eproto::file_level_metadata[9].descriptor;
 }
 
 const Disconnect& Disconnect::default_instance() {
@@ -3226,7 +3585,7 @@ void Disconnect::InternalSwap(Disconnect* other) {
 
 ::google::protobuf::Metadata Disconnect::GetMetadata() const {
   protobuf_PhotonCommands_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_PhotonCommands_2eproto::file_level_metadata[7];
+  return protobuf_PhotonCommands_2eproto::file_level_metadata[9];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS

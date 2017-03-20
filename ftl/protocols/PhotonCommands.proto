@@ -90,7 +90,16 @@ message StreamStart_Response
   uint32 IngestPort = 1;
 }
 
+message Heartbeat
+{  
+}
+
+message Heartbeat_Response
+{
+}
+
 message Disconnect
 {
   DisconnectReasons Reason = 1;
 }
+

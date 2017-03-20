@@ -48,6 +48,12 @@ extern Connect_ResponseDefaultTypeInternal _Connect_Response_default_instance_;
 class Disconnect;
 class DisconnectDefaultTypeInternal;
 extern DisconnectDefaultTypeInternal _Disconnect_default_instance_;
+class Heartbeat;
+class HeartbeatDefaultTypeInternal;
+extern HeartbeatDefaultTypeInternal _Heartbeat_default_instance_;
+class Heartbeat_Response;
+class Heartbeat_ResponseDefaultTypeInternal;
+extern Heartbeat_ResponseDefaultTypeInternal _Heartbeat_Response_default_instance_;
 class PhotonWrapper;
 class PhotonWrapperDefaultTypeInternal;
 extern PhotonWrapperDefaultTypeInternal _PhotonWrapper_default_instance_;
@@ -902,6 +908,158 @@ class StreamStart_Response : public ::google::protobuf::Message /* @@protoc_inse
 };
 // -------------------------------------------------------------------
 
+class Heartbeat : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Photon.Commands.Heartbeat) */ {
+ public:
+  Heartbeat();
+  virtual ~Heartbeat();
+
+  Heartbeat(const Heartbeat& from);
+
+  inline Heartbeat& operator=(const Heartbeat& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Heartbeat& default_instance();
+
+  static inline const Heartbeat* internal_default_instance() {
+    return reinterpret_cast<const Heartbeat*>(
+               &_Heartbeat_default_instance_);
+  }
+
+  void Swap(Heartbeat* other);
+
+  // implements Message ----------------------------------------------
+
+  inline Heartbeat* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  Heartbeat* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const Heartbeat& from);
+  void MergeFrom(const Heartbeat& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(Heartbeat* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:Photon.Commands.Heartbeat)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct  protobuf_PhotonCommands_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class Heartbeat_Response : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Photon.Commands.Heartbeat_Response) */ {
+ public:
+  Heartbeat_Response();
+  virtual ~Heartbeat_Response();
+
+  Heartbeat_Response(const Heartbeat_Response& from);
+
+  inline Heartbeat_Response& operator=(const Heartbeat_Response& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Heartbeat_Response& default_instance();
+
+  static inline const Heartbeat_Response* internal_default_instance() {
+    return reinterpret_cast<const Heartbeat_Response*>(
+               &_Heartbeat_Response_default_instance_);
+  }
+
+  void Swap(Heartbeat_Response* other);
+
+  // implements Message ----------------------------------------------
+
+  inline Heartbeat_Response* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  Heartbeat_Response* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const Heartbeat_Response& from);
+  void MergeFrom(const Heartbeat_Response& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(Heartbeat_Response* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:Photon.Commands.Heartbeat_Response)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct  protobuf_PhotonCommands_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class Disconnect : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Photon.Commands.Disconnect) */ {
  public:
   Disconnect();
@@ -1602,6 +1760,14 @@ inline void StreamStart_Response::set_ingestport(::google::protobuf::uint32 valu
 
 // -------------------------------------------------------------------
 
+// Heartbeat
+
+// -------------------------------------------------------------------
+
+// Heartbeat_Response
+
+// -------------------------------------------------------------------
+
 // Disconnect
 
 // .Photon.Commands.DisconnectReasons Reason = 1;
@@ -1619,6 +1785,10 @@ inline void Disconnect::set_reason(::Photon::Commands::DisconnectReasons value) 
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
