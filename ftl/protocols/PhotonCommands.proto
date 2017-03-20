@@ -27,6 +27,17 @@ enum StatusCodes {
   INTERNAL_LOCAL_ERROR = 502;
 }
 
+enum DisconnectReasons {
+  DISCONNECT_UNKNOWN = 0;
+  CLIENT_CLEAN = 200;
+  INGEST_CLEAN = 201;
+  CLIENT_ERROR_UNKNOWN = 300;  
+  CLIENT_ERROR_TIMEOUT = 301;
+  CLIENT_ERROR_BAD_RESPONSE = 302;
+  INGEST_ERROR_UNKNOWN = 400; 
+  INGEST_ERROR_TIMEOUT = 401;
+}
+
 message PhotonWrapper
 {
   StatusCodes StatusCode = 1;
@@ -77,4 +88,9 @@ message StartStream
 message StreamStart_Response
 {
   uint32 IngestPort = 1;
+}
+
+message Disconnect
+{
+  DisconnectReasons Reason = 1;
 }

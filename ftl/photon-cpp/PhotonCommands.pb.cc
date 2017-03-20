@@ -33,14 +33,16 @@ class StartStreamDefaultTypeInternal : public ::google::protobuf::internal::Expl
 } _StartStream_default_instance_;
 class StreamStart_ResponseDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<StreamStart_Response> {
 } _StreamStart_Response_default_instance_;
+class DisconnectDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Disconnect> {
+} _Disconnect_default_instance_;
 
 namespace protobuf_PhotonCommands_2eproto {
 
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[7];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
+::google::protobuf::Metadata file_level_metadata[8];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[3];
 
 }  // namespace
 
@@ -94,6 +96,11 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StreamStart_Response, ingestport_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Disconnect, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Disconnect, reason_),
 };
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
@@ -104,6 +111,7 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 24, -1, sizeof(Authenticate_Response)},
   { 28, -1, sizeof(StartStream)},
   { 44, -1, sizeof(StreamStart_Response)},
+  { 49, -1, sizeof(Disconnect)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -114,6 +122,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_Authenticate_Response_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_StartStream_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_StreamStart_Response_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_Disconnect_default_instance_),
 };
 
 namespace {
@@ -134,7 +143,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 7);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 8);
 }
 
 }  // namespace
@@ -154,6 +163,8 @@ void TableStruct::Shutdown() {
   delete file_level_metadata[5].reflection;
   _StreamStart_Response_default_instance_.Shutdown();
   delete file_level_metadata[6].reflection;
+  _Disconnect_default_instance_.Shutdown();
+  delete file_level_metadata[7].reflection;
 }
 
 void TableStruct::InitDefaultsImpl() {
@@ -168,6 +179,7 @@ void TableStruct::InitDefaultsImpl() {
   _Authenticate_Response_default_instance_.DefaultConstruct();
   _StartStream_default_instance_.DefaultConstruct();
   _StreamStart_Response_default_instance_.DefaultConstruct();
+  _Disconnect_default_instance_.DefaultConstruct();
   _PhotonWrapper_default_instance_.get_mutable()->command_ = const_cast< ::google::protobuf::Any*>(
       ::google::protobuf::Any::internal_default_instance());
 }
@@ -198,19 +210,26 @@ void AddDescriptorsImpl() {
       "\010HasAudio\030\036 \001(\010\022\022\n\nAudioCodec\030\037 \001(\t\022\030\n\020A"
       "udioPayloadType\030  \001(\r\022\027\n\017AudioIngestSSRC"
       "\030! \001(\r\"*\n\024StreamStart_Response\022\022\n\nIngest"
-      "Port\030\001 \001(\r*#\n\017ProtocolVersion\022\010\n\004NONE\020\000\022"
-      "\006\n\002V1\020\001*\251\002\n\013StatusCodes\022\013\n\007UNKNOWN\020\000\022\007\n\002"
-      "OK\020\310\001\022\t\n\004PING\020\311\001\022\020\n\013BAD_REQUEST\020\220\003\022\021\n\014UN"
-      "AUTHORIZED\020\221\003\022\020\n\013OLD_VERSION\020\222\003\022\020\n\013NO_RE"
-      "SPONSE\020\223\003\022\027\n\022INVALID_STREAM_KEY\020\226\003\022\023\n\016CH"
-      "ANNEL_IN_USE\020\227\003\022\027\n\022REGION_UNSUPPORTED\020\230\003"
-      "\022\025\n\020NO_MEDIA_TIMEOUT\020\231\003\022\032\n\025INTERNAL_SERV"
-      "ER_ERROR\020\364\003\022\033\n\026INTERNAL_COMMAND_ERROR\020\365\003"
-      "\022\031\n\024INTERNAL_LOCAL_ERROR\020\366\003B\nZ\010photongob"
-      "\006proto3"
+      "Port\030\001 \001(\r\"@\n\nDisconnect\0222\n\006Reason\030\001 \001(\016"
+      "2\".Photon.Commands.DisconnectReasons*#\n\017"
+      "ProtocolVersion\022\010\n\004NONE\020\000\022\006\n\002V1\020\001*\251\002\n\013St"
+      "atusCodes\022\013\n\007UNKNOWN\020\000\022\007\n\002OK\020\310\001\022\t\n\004PING\020"
+      "\311\001\022\020\n\013BAD_REQUEST\020\220\003\022\021\n\014UNAUTHORIZED\020\221\003\022"
+      "\020\n\013OLD_VERSION\020\222\003\022\020\n\013NO_RESPONSE\020\223\003\022\027\n\022I"
+      "NVALID_STREAM_KEY\020\226\003\022\023\n\016CHANNEL_IN_USE\020\227"
+      "\003\022\027\n\022REGION_UNSUPPORTED\020\230\003\022\025\n\020NO_MEDIA_T"
+      "IMEOUT\020\231\003\022\032\n\025INTERNAL_SERVER_ERROR\020\364\003\022\033\n"
+      "\026INTERNAL_COMMAND_ERROR\020\365\003\022\031\n\024INTERNAL_L"
+      "OCAL_ERROR\020\366\003*\335\001\n\021DisconnectReasons\022\026\n\022D"
+      "ISCONNECT_UNKNOWN\020\000\022\021\n\014CLIENT_CLEAN\020\310\001\022\021"
+      "\n\014INGEST_CLEAN\020\311\001\022\031\n\024CLIENT_ERROR_UNKNOW"
+      "N\020\254\002\022\031\n\024CLIENT_ERROR_TIMEOUT\020\255\002\022\036\n\031CLIEN"
+      "T_ERROR_BAD_RESPONSE\020\256\002\022\031\n\024INGEST_ERROR_"
+      "UNKNOWN\020\220\003\022\031\n\024INGEST_ERROR_TIMEOUT\020\221\003B\nZ"
+      "\010photongob\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1127);
+      descriptor, 1417);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "PhotonCommands.proto", &protobuf_RegisterTypes);
   ::google::protobuf::protobuf_google_2fprotobuf_2fany_2eproto::AddDescriptors();
@@ -264,6 +283,26 @@ bool StatusCodes_IsValid(int value) {
     case 500:
     case 501:
     case 502:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* DisconnectReasons_descriptor() {
+  protobuf_PhotonCommands_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_PhotonCommands_2eproto::file_level_enum_descriptors[2];
+}
+bool DisconnectReasons_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 200:
+    case 201:
+    case 300:
+    case 301:
+    case 302:
+    case 400:
+    case 401:
       return true;
     default:
       return false;
@@ -2978,6 +3017,233 @@ void StreamStart_Response::set_ingestport(::google::protobuf::uint32 value) {
   
   ingestport_ = value;
   // @@protoc_insertion_point(field_set:Photon.Commands.StreamStart_Response.IngestPort)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Disconnect::kReasonFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Disconnect::Disconnect()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_PhotonCommands_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Photon.Commands.Disconnect)
+}
+Disconnect::Disconnect(const Disconnect& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  reason_ = from.reason_;
+  // @@protoc_insertion_point(copy_constructor:Photon.Commands.Disconnect)
+}
+
+void Disconnect::SharedCtor() {
+  reason_ = 0;
+  _cached_size_ = 0;
+}
+
+Disconnect::~Disconnect() {
+  // @@protoc_insertion_point(destructor:Photon.Commands.Disconnect)
+  SharedDtor();
+}
+
+void Disconnect::SharedDtor() {
+}
+
+void Disconnect::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Disconnect::descriptor() {
+  protobuf_PhotonCommands_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_PhotonCommands_2eproto::file_level_metadata[7].descriptor;
+}
+
+const Disconnect& Disconnect::default_instance() {
+  protobuf_PhotonCommands_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+Disconnect* Disconnect::New(::google::protobuf::Arena* arena) const {
+  Disconnect* n = new Disconnect;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void Disconnect::Clear() {
+// @@protoc_insertion_point(message_clear_start:Photon.Commands.Disconnect)
+  reason_ = 0;
+}
+
+bool Disconnect::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Photon.Commands.Disconnect)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // .Photon.Commands.DisconnectReasons Reason = 1;
+      case 1: {
+        if (tag == 8u) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_reason(static_cast< ::Photon::Commands::DisconnectReasons >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Photon.Commands.Disconnect)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Photon.Commands.Disconnect)
+  return false;
+#undef DO_
+}
+
+void Disconnect::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Photon.Commands.Disconnect)
+  // .Photon.Commands.DisconnectReasons Reason = 1;
+  if (this->reason() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->reason(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:Photon.Commands.Disconnect)
+}
+
+::google::protobuf::uint8* Disconnect::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:Photon.Commands.Disconnect)
+  // .Photon.Commands.DisconnectReasons Reason = 1;
+  if (this->reason() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->reason(), target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:Photon.Commands.Disconnect)
+  return target;
+}
+
+size_t Disconnect::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Photon.Commands.Disconnect)
+  size_t total_size = 0;
+
+  // .Photon.Commands.DisconnectReasons Reason = 1;
+  if (this->reason() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->reason());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Disconnect::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Photon.Commands.Disconnect)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Disconnect* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const Disconnect>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Photon.Commands.Disconnect)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Photon.Commands.Disconnect)
+    MergeFrom(*source);
+  }
+}
+
+void Disconnect::MergeFrom(const Disconnect& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Photon.Commands.Disconnect)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.reason() != 0) {
+    set_reason(from.reason());
+  }
+}
+
+void Disconnect::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Photon.Commands.Disconnect)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Disconnect::CopyFrom(const Disconnect& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Photon.Commands.Disconnect)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Disconnect::IsInitialized() const {
+  return true;
+}
+
+void Disconnect::Swap(Disconnect* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Disconnect::InternalSwap(Disconnect* other) {
+  std::swap(reason_, other->reason_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata Disconnect::GetMetadata() const {
+  protobuf_PhotonCommands_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_PhotonCommands_2eproto::file_level_metadata[7];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// Disconnect
+
+// .Photon.Commands.DisconnectReasons Reason = 1;
+void Disconnect::clear_reason() {
+  reason_ = 0;
+}
+::Photon::Commands::DisconnectReasons Disconnect::reason() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.Disconnect.Reason)
+  return static_cast< ::Photon::Commands::DisconnectReasons >(reason_);
+}
+void Disconnect::set_reason(::Photon::Commands::DisconnectReasons value) {
+  
+  reason_ = value;
+  // @@protoc_insertion_point(field_set:Photon.Commands.Disconnect.Reason)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

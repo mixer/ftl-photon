@@ -45,6 +45,9 @@ extern ConnectDefaultTypeInternal _Connect_default_instance_;
 class Connect_Response;
 class Connect_ResponseDefaultTypeInternal;
 extern Connect_ResponseDefaultTypeInternal _Connect_Response_default_instance_;
+class Disconnect;
+class DisconnectDefaultTypeInternal;
+extern DisconnectDefaultTypeInternal _Disconnect_default_instance_;
 class PhotonWrapper;
 class PhotonWrapperDefaultTypeInternal;
 extern PhotonWrapperDefaultTypeInternal _PhotonWrapper_default_instance_;
@@ -131,6 +134,33 @@ inline bool StatusCodes_Parse(
     const ::std::string& name, StatusCodes* value) {
   return ::google::protobuf::internal::ParseNamedEnum<StatusCodes>(
     StatusCodes_descriptor(), name, value);
+}
+enum DisconnectReasons {
+  DISCONNECT_UNKNOWN = 0,
+  CLIENT_CLEAN = 200,
+  INGEST_CLEAN = 201,
+  CLIENT_ERROR_UNKNOWN = 300,
+  CLIENT_ERROR_TIMEOUT = 301,
+  CLIENT_ERROR_BAD_RESPONSE = 302,
+  INGEST_ERROR_UNKNOWN = 400,
+  INGEST_ERROR_TIMEOUT = 401,
+  DisconnectReasons_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  DisconnectReasons_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool DisconnectReasons_IsValid(int value);
+const DisconnectReasons DisconnectReasons_MIN = DISCONNECT_UNKNOWN;
+const DisconnectReasons DisconnectReasons_MAX = INGEST_ERROR_TIMEOUT;
+const int DisconnectReasons_ARRAYSIZE = DisconnectReasons_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* DisconnectReasons_descriptor();
+inline const ::std::string& DisconnectReasons_Name(DisconnectReasons value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    DisconnectReasons_descriptor(), value);
+}
+inline bool DisconnectReasons_Parse(
+    const ::std::string& name, DisconnectReasons* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<DisconnectReasons>(
+    DisconnectReasons_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -870,6 +900,89 @@ class StreamStart_Response : public ::google::protobuf::Message /* @@protoc_inse
   mutable int _cached_size_;
   friend struct  protobuf_PhotonCommands_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class Disconnect : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Photon.Commands.Disconnect) */ {
+ public:
+  Disconnect();
+  virtual ~Disconnect();
+
+  Disconnect(const Disconnect& from);
+
+  inline Disconnect& operator=(const Disconnect& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Disconnect& default_instance();
+
+  static inline const Disconnect* internal_default_instance() {
+    return reinterpret_cast<const Disconnect*>(
+               &_Disconnect_default_instance_);
+  }
+
+  void Swap(Disconnect* other);
+
+  // implements Message ----------------------------------------------
+
+  inline Disconnect* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  Disconnect* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const Disconnect& from);
+  void MergeFrom(const Disconnect& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(Disconnect* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .Photon.Commands.DisconnectReasons Reason = 1;
+  void clear_reason();
+  static const int kReasonFieldNumber = 1;
+  ::Photon::Commands::DisconnectReasons reason() const;
+  void set_reason(::Photon::Commands::DisconnectReasons value);
+
+  // @@protoc_insertion_point(class_scope:Photon.Commands.Disconnect)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  int reason_;
+  mutable int _cached_size_;
+  friend struct  protobuf_PhotonCommands_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -1487,7 +1600,27 @@ inline void StreamStart_Response::set_ingestport(::google::protobuf::uint32 valu
   // @@protoc_insertion_point(field_set:Photon.Commands.StreamStart_Response.IngestPort)
 }
 
+// -------------------------------------------------------------------
+
+// Disconnect
+
+// .Photon.Commands.DisconnectReasons Reason = 1;
+inline void Disconnect::clear_reason() {
+  reason_ = 0;
+}
+inline ::Photon::Commands::DisconnectReasons Disconnect::reason() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.Disconnect.Reason)
+  return static_cast< ::Photon::Commands::DisconnectReasons >(reason_);
+}
+inline void Disconnect::set_reason(::Photon::Commands::DisconnectReasons value) {
+  
+  reason_ = value;
+  // @@protoc_insertion_point(field_set:Photon.Commands.Disconnect.Reason)
+}
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -1520,6 +1653,11 @@ template <> struct is_proto_enum< ::Photon::Commands::StatusCodes> : ::google::p
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::Photon::Commands::StatusCodes>() {
   return ::Photon::Commands::StatusCodes_descriptor();
+}
+template <> struct is_proto_enum< ::Photon::Commands::DisconnectReasons> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::Photon::Commands::DisconnectReasons>() {
+  return ::Photon::Commands::DisconnectReasons_descriptor();
 }
 
 }  // namespace protobuf
