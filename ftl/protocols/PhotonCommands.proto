@@ -10,16 +10,17 @@ enum ProtocolVersion {
   V1 = 1;
 }
 
+// Codes that can be set on any command
 enum StatusCodes {
   UNKNOWN = 0;
-  OK = 200;                   //used
+  OK = 200;
   PING = 201;
-  BAD_REQUEST = 400;          //used
-  UNAUTHORIZED = 401;         //used
+  BAD_REQUEST = 400;
+  UNAUTHORIZED = 401;
   OLD_VERSION = 402;
   NO_RESPONSE = 403;
-  INVALID_STREAM_KEY = 406;     //used
-  CHANNEL_IN_USE = 407;         //used
+  INVALID_STREAM_KEY = 406;
+  CHANNEL_IN_USE = 407;
   REGION_UNSUPPORTED = 408;
   NO_MEDIA_TIMEOUT = 409;
   INTERNAL_SERVER_ERROR = 500;
@@ -27,6 +28,7 @@ enum StatusCodes {
   INTERNAL_LOCAL_ERROR = 502;
 }
 
+// Reasons why the stream disconnected
 enum DisconnectReasons {
   DISCONNECT_UNKNOWN = 0;
   CLIENT_CLEAN = 200;
@@ -102,4 +104,3 @@ message Disconnect
 {
   DisconnectReasons Reason = 1;
 }
-

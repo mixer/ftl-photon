@@ -59,6 +59,7 @@ func (x ProtocolVersion) String() string {
 }
 func (ProtocolVersion) EnumDescriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+// Codes that can be set on any command
 type StatusCodes int32
 
 const (
@@ -116,6 +117,7 @@ func (x StatusCodes) String() string {
 }
 func (StatusCodes) EnumDescriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
+// Reasons why the stream disconnected
 type DisconnectReasons int32
 
 const (
