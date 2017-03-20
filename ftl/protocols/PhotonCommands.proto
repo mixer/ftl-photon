@@ -12,17 +12,14 @@ enum ProtocolVersion {
 
 enum StatusCodes {
   UNKNOWN = 0;
-  OK = 200;
+  OK = 200;                   //used
   PING = 201;
-  BAD_REQUEST = 400;
-  UNAUTHORIZED = 401;
+  BAD_REQUEST = 400;          //used
+  UNAUTHORIZED = 401;         //used
   OLD_VERSION = 402;
   NO_RESPONSE = 403;
-  AUDIO_SSRC_COLLISION = 404;
-  VIDEO_SSRC_COLLISION = 405;
-  INVALID_STREAM_KEY = 406;
-  CHANNEL_IN_USE = 407;
-  REGION_UNSUPPORTED = 408;
+  INVALID_STREAM_KEY = 406;     //used
+  CHANNEL_IN_USE = 407;         //used
   NO_MEDIA_TIMEOUT = 409;
   INTERNAL_SERVER_ERROR = 500;
   INTERNAL_COMMAND_ERROR = 501;
@@ -53,6 +50,29 @@ message Authenticate
 }
 
 message Authenticate_Response
-{
+{ }
 
+message StartStream
+{
+  string VendorName = 1;
+  string VendorVersion = 2;
+
+  // Video Params
+  bool HasVideo = 10;
+  string VideoCodec = 11;
+  uint32 VideoHeight = 12;
+  uint32 VideoWidth = 13;
+  uint32 VideoPayloadType = 14;
+  uint32 VideoIngestSSRC = 15;
+
+  // Audio Params
+  bool HasAudio = 30;
+  string AudioCodec = 31;
+  uint32 AudioPayloadType = 32;
+  uint32 AudioIngestSSRC = 33;
+}
+
+message StreamStart_Response
+{
+  uint32 IngestPort = 1;
 }

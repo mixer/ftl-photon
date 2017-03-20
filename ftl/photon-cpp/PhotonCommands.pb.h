@@ -48,6 +48,12 @@ extern Connect_ResponseDefaultTypeInternal _Connect_Response_default_instance_;
 class PhotonWrapper;
 class PhotonWrapperDefaultTypeInternal;
 extern PhotonWrapperDefaultTypeInternal _PhotonWrapper_default_instance_;
+class StartStream;
+class StartStreamDefaultTypeInternal;
+extern StartStreamDefaultTypeInternal _StartStream_default_instance_;
+class StreamStart_Response;
+class StreamStart_ResponseDefaultTypeInternal;
+extern StreamStart_ResponseDefaultTypeInternal _StreamStart_Response_default_instance_;
 }  // namespace Commands
 }  // namespace Photon
 namespace google {
@@ -101,11 +107,8 @@ enum StatusCodes {
   UNAUTHORIZED = 401,
   OLD_VERSION = 402,
   NO_RESPONSE = 403,
-  AUDIO_SSRC_COLLISION = 404,
-  VIDEO_SSRC_COLLISION = 405,
   INVALID_STREAM_KEY = 406,
   CHANNEL_IN_USE = 407,
-  REGION_UNSUPPORTED = 408,
   NO_MEDIA_TIMEOUT = 409,
   INTERNAL_SERVER_ERROR = 500,
   INTERNAL_COMMAND_ERROR = 501,
@@ -576,6 +579,281 @@ class Authenticate_Response : public ::google::protobuf::Message /* @@protoc_ins
   mutable int _cached_size_;
   friend struct  protobuf_PhotonCommands_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class StartStream : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Photon.Commands.StartStream) */ {
+ public:
+  StartStream();
+  virtual ~StartStream();
+
+  StartStream(const StartStream& from);
+
+  inline StartStream& operator=(const StartStream& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const StartStream& default_instance();
+
+  static inline const StartStream* internal_default_instance() {
+    return reinterpret_cast<const StartStream*>(
+               &_StartStream_default_instance_);
+  }
+
+  void Swap(StartStream* other);
+
+  // implements Message ----------------------------------------------
+
+  inline StartStream* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  StartStream* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const StartStream& from);
+  void MergeFrom(const StartStream& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(StartStream* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string VendorName = 1;
+  void clear_vendorname();
+  static const int kVendorNameFieldNumber = 1;
+  const ::std::string& vendorname() const;
+  void set_vendorname(const ::std::string& value);
+  #if LANG_CXX11
+  void set_vendorname(::std::string&& value);
+  #endif
+  void set_vendorname(const char* value);
+  void set_vendorname(const char* value, size_t size);
+  ::std::string* mutable_vendorname();
+  ::std::string* release_vendorname();
+  void set_allocated_vendorname(::std::string* vendorname);
+
+  // string VendorVersion = 2;
+  void clear_vendorversion();
+  static const int kVendorVersionFieldNumber = 2;
+  const ::std::string& vendorversion() const;
+  void set_vendorversion(const ::std::string& value);
+  #if LANG_CXX11
+  void set_vendorversion(::std::string&& value);
+  #endif
+  void set_vendorversion(const char* value);
+  void set_vendorversion(const char* value, size_t size);
+  ::std::string* mutable_vendorversion();
+  ::std::string* release_vendorversion();
+  void set_allocated_vendorversion(::std::string* vendorversion);
+
+  // string VideoCodec = 11;
+  void clear_videocodec();
+  static const int kVideoCodecFieldNumber = 11;
+  const ::std::string& videocodec() const;
+  void set_videocodec(const ::std::string& value);
+  #if LANG_CXX11
+  void set_videocodec(::std::string&& value);
+  #endif
+  void set_videocodec(const char* value);
+  void set_videocodec(const char* value, size_t size);
+  ::std::string* mutable_videocodec();
+  ::std::string* release_videocodec();
+  void set_allocated_videocodec(::std::string* videocodec);
+
+  // string AudioCodec = 31;
+  void clear_audiocodec();
+  static const int kAudioCodecFieldNumber = 31;
+  const ::std::string& audiocodec() const;
+  void set_audiocodec(const ::std::string& value);
+  #if LANG_CXX11
+  void set_audiocodec(::std::string&& value);
+  #endif
+  void set_audiocodec(const char* value);
+  void set_audiocodec(const char* value, size_t size);
+  ::std::string* mutable_audiocodec();
+  ::std::string* release_audiocodec();
+  void set_allocated_audiocodec(::std::string* audiocodec);
+
+  // uint32 VideoHeight = 12;
+  void clear_videoheight();
+  static const int kVideoHeightFieldNumber = 12;
+  ::google::protobuf::uint32 videoheight() const;
+  void set_videoheight(::google::protobuf::uint32 value);
+
+  // uint32 VideoWidth = 13;
+  void clear_videowidth();
+  static const int kVideoWidthFieldNumber = 13;
+  ::google::protobuf::uint32 videowidth() const;
+  void set_videowidth(::google::protobuf::uint32 value);
+
+  // bool HasVideo = 10;
+  void clear_hasvideo();
+  static const int kHasVideoFieldNumber = 10;
+  bool hasvideo() const;
+  void set_hasvideo(bool value);
+
+  // bool HasAudio = 30;
+  void clear_hasaudio();
+  static const int kHasAudioFieldNumber = 30;
+  bool hasaudio() const;
+  void set_hasaudio(bool value);
+
+  // uint32 VideoPayloadType = 14;
+  void clear_videopayloadtype();
+  static const int kVideoPayloadTypeFieldNumber = 14;
+  ::google::protobuf::uint32 videopayloadtype() const;
+  void set_videopayloadtype(::google::protobuf::uint32 value);
+
+  // uint32 VideoIngestSSRC = 15;
+  void clear_videoingestssrc();
+  static const int kVideoIngestSSRCFieldNumber = 15;
+  ::google::protobuf::uint32 videoingestssrc() const;
+  void set_videoingestssrc(::google::protobuf::uint32 value);
+
+  // uint32 AudioPayloadType = 32;
+  void clear_audiopayloadtype();
+  static const int kAudioPayloadTypeFieldNumber = 32;
+  ::google::protobuf::uint32 audiopayloadtype() const;
+  void set_audiopayloadtype(::google::protobuf::uint32 value);
+
+  // uint32 AudioIngestSSRC = 33;
+  void clear_audioingestssrc();
+  static const int kAudioIngestSSRCFieldNumber = 33;
+  ::google::protobuf::uint32 audioingestssrc() const;
+  void set_audioingestssrc(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:Photon.Commands.StartStream)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr vendorname_;
+  ::google::protobuf::internal::ArenaStringPtr vendorversion_;
+  ::google::protobuf::internal::ArenaStringPtr videocodec_;
+  ::google::protobuf::internal::ArenaStringPtr audiocodec_;
+  ::google::protobuf::uint32 videoheight_;
+  ::google::protobuf::uint32 videowidth_;
+  bool hasvideo_;
+  bool hasaudio_;
+  ::google::protobuf::uint32 videopayloadtype_;
+  ::google::protobuf::uint32 videoingestssrc_;
+  ::google::protobuf::uint32 audiopayloadtype_;
+  ::google::protobuf::uint32 audioingestssrc_;
+  mutable int _cached_size_;
+  friend struct  protobuf_PhotonCommands_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class StreamStart_Response : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Photon.Commands.StreamStart_Response) */ {
+ public:
+  StreamStart_Response();
+  virtual ~StreamStart_Response();
+
+  StreamStart_Response(const StreamStart_Response& from);
+
+  inline StreamStart_Response& operator=(const StreamStart_Response& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const StreamStart_Response& default_instance();
+
+  static inline const StreamStart_Response* internal_default_instance() {
+    return reinterpret_cast<const StreamStart_Response*>(
+               &_StreamStart_Response_default_instance_);
+  }
+
+  void Swap(StreamStart_Response* other);
+
+  // implements Message ----------------------------------------------
+
+  inline StreamStart_Response* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  StreamStart_Response* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const StreamStart_Response& from);
+  void MergeFrom(const StreamStart_Response& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(StreamStart_Response* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint32 IngestPort = 1;
+  void clear_ingestport();
+  static const int kIngestPortFieldNumber = 1;
+  ::google::protobuf::uint32 ingestport() const;
+  void set_ingestport(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:Photon.Commands.StreamStart_Response)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 ingestport_;
+  mutable int _cached_size_;
+  friend struct  protobuf_PhotonCommands_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -799,7 +1077,353 @@ inline void Authenticate::set_allocated_authkey(::std::string* authkey) {
 
 // Authenticate_Response
 
+// -------------------------------------------------------------------
+
+// StartStream
+
+// string VendorName = 1;
+inline void StartStream::clear_vendorname() {
+  vendorname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& StartStream::vendorname() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.StartStream.VendorName)
+  return vendorname_.GetNoArena();
+}
+inline void StartStream::set_vendorname(const ::std::string& value) {
+  
+  vendorname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Photon.Commands.StartStream.VendorName)
+}
+#if LANG_CXX11
+inline void StartStream::set_vendorname(::std::string&& value) {
+  
+  vendorname_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Photon.Commands.StartStream.VendorName)
+}
+#endif
+inline void StartStream::set_vendorname(const char* value) {
+  
+  vendorname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Photon.Commands.StartStream.VendorName)
+}
+inline void StartStream::set_vendorname(const char* value, size_t size) {
+  
+  vendorname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Photon.Commands.StartStream.VendorName)
+}
+inline ::std::string* StartStream::mutable_vendorname() {
+  
+  // @@protoc_insertion_point(field_mutable:Photon.Commands.StartStream.VendorName)
+  return vendorname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StartStream::release_vendorname() {
+  // @@protoc_insertion_point(field_release:Photon.Commands.StartStream.VendorName)
+  
+  return vendorname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StartStream::set_allocated_vendorname(::std::string* vendorname) {
+  if (vendorname != NULL) {
+    
+  } else {
+    
+  }
+  vendorname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), vendorname);
+  // @@protoc_insertion_point(field_set_allocated:Photon.Commands.StartStream.VendorName)
+}
+
+// string VendorVersion = 2;
+inline void StartStream::clear_vendorversion() {
+  vendorversion_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& StartStream::vendorversion() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.StartStream.VendorVersion)
+  return vendorversion_.GetNoArena();
+}
+inline void StartStream::set_vendorversion(const ::std::string& value) {
+  
+  vendorversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Photon.Commands.StartStream.VendorVersion)
+}
+#if LANG_CXX11
+inline void StartStream::set_vendorversion(::std::string&& value) {
+  
+  vendorversion_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Photon.Commands.StartStream.VendorVersion)
+}
+#endif
+inline void StartStream::set_vendorversion(const char* value) {
+  
+  vendorversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Photon.Commands.StartStream.VendorVersion)
+}
+inline void StartStream::set_vendorversion(const char* value, size_t size) {
+  
+  vendorversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Photon.Commands.StartStream.VendorVersion)
+}
+inline ::std::string* StartStream::mutable_vendorversion() {
+  
+  // @@protoc_insertion_point(field_mutable:Photon.Commands.StartStream.VendorVersion)
+  return vendorversion_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StartStream::release_vendorversion() {
+  // @@protoc_insertion_point(field_release:Photon.Commands.StartStream.VendorVersion)
+  
+  return vendorversion_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StartStream::set_allocated_vendorversion(::std::string* vendorversion) {
+  if (vendorversion != NULL) {
+    
+  } else {
+    
+  }
+  vendorversion_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), vendorversion);
+  // @@protoc_insertion_point(field_set_allocated:Photon.Commands.StartStream.VendorVersion)
+}
+
+// bool HasVideo = 10;
+inline void StartStream::clear_hasvideo() {
+  hasvideo_ = false;
+}
+inline bool StartStream::hasvideo() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.StartStream.HasVideo)
+  return hasvideo_;
+}
+inline void StartStream::set_hasvideo(bool value) {
+  
+  hasvideo_ = value;
+  // @@protoc_insertion_point(field_set:Photon.Commands.StartStream.HasVideo)
+}
+
+// string VideoCodec = 11;
+inline void StartStream::clear_videocodec() {
+  videocodec_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& StartStream::videocodec() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.StartStream.VideoCodec)
+  return videocodec_.GetNoArena();
+}
+inline void StartStream::set_videocodec(const ::std::string& value) {
+  
+  videocodec_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Photon.Commands.StartStream.VideoCodec)
+}
+#if LANG_CXX11
+inline void StartStream::set_videocodec(::std::string&& value) {
+  
+  videocodec_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Photon.Commands.StartStream.VideoCodec)
+}
+#endif
+inline void StartStream::set_videocodec(const char* value) {
+  
+  videocodec_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Photon.Commands.StartStream.VideoCodec)
+}
+inline void StartStream::set_videocodec(const char* value, size_t size) {
+  
+  videocodec_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Photon.Commands.StartStream.VideoCodec)
+}
+inline ::std::string* StartStream::mutable_videocodec() {
+  
+  // @@protoc_insertion_point(field_mutable:Photon.Commands.StartStream.VideoCodec)
+  return videocodec_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StartStream::release_videocodec() {
+  // @@protoc_insertion_point(field_release:Photon.Commands.StartStream.VideoCodec)
+  
+  return videocodec_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StartStream::set_allocated_videocodec(::std::string* videocodec) {
+  if (videocodec != NULL) {
+    
+  } else {
+    
+  }
+  videocodec_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), videocodec);
+  // @@protoc_insertion_point(field_set_allocated:Photon.Commands.StartStream.VideoCodec)
+}
+
+// uint32 VideoHeight = 12;
+inline void StartStream::clear_videoheight() {
+  videoheight_ = 0u;
+}
+inline ::google::protobuf::uint32 StartStream::videoheight() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.StartStream.VideoHeight)
+  return videoheight_;
+}
+inline void StartStream::set_videoheight(::google::protobuf::uint32 value) {
+  
+  videoheight_ = value;
+  // @@protoc_insertion_point(field_set:Photon.Commands.StartStream.VideoHeight)
+}
+
+// uint32 VideoWidth = 13;
+inline void StartStream::clear_videowidth() {
+  videowidth_ = 0u;
+}
+inline ::google::protobuf::uint32 StartStream::videowidth() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.StartStream.VideoWidth)
+  return videowidth_;
+}
+inline void StartStream::set_videowidth(::google::protobuf::uint32 value) {
+  
+  videowidth_ = value;
+  // @@protoc_insertion_point(field_set:Photon.Commands.StartStream.VideoWidth)
+}
+
+// uint32 VideoPayloadType = 14;
+inline void StartStream::clear_videopayloadtype() {
+  videopayloadtype_ = 0u;
+}
+inline ::google::protobuf::uint32 StartStream::videopayloadtype() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.StartStream.VideoPayloadType)
+  return videopayloadtype_;
+}
+inline void StartStream::set_videopayloadtype(::google::protobuf::uint32 value) {
+  
+  videopayloadtype_ = value;
+  // @@protoc_insertion_point(field_set:Photon.Commands.StartStream.VideoPayloadType)
+}
+
+// uint32 VideoIngestSSRC = 15;
+inline void StartStream::clear_videoingestssrc() {
+  videoingestssrc_ = 0u;
+}
+inline ::google::protobuf::uint32 StartStream::videoingestssrc() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.StartStream.VideoIngestSSRC)
+  return videoingestssrc_;
+}
+inline void StartStream::set_videoingestssrc(::google::protobuf::uint32 value) {
+  
+  videoingestssrc_ = value;
+  // @@protoc_insertion_point(field_set:Photon.Commands.StartStream.VideoIngestSSRC)
+}
+
+// bool HasAudio = 30;
+inline void StartStream::clear_hasaudio() {
+  hasaudio_ = false;
+}
+inline bool StartStream::hasaudio() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.StartStream.HasAudio)
+  return hasaudio_;
+}
+inline void StartStream::set_hasaudio(bool value) {
+  
+  hasaudio_ = value;
+  // @@protoc_insertion_point(field_set:Photon.Commands.StartStream.HasAudio)
+}
+
+// string AudioCodec = 31;
+inline void StartStream::clear_audiocodec() {
+  audiocodec_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& StartStream::audiocodec() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.StartStream.AudioCodec)
+  return audiocodec_.GetNoArena();
+}
+inline void StartStream::set_audiocodec(const ::std::string& value) {
+  
+  audiocodec_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Photon.Commands.StartStream.AudioCodec)
+}
+#if LANG_CXX11
+inline void StartStream::set_audiocodec(::std::string&& value) {
+  
+  audiocodec_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Photon.Commands.StartStream.AudioCodec)
+}
+#endif
+inline void StartStream::set_audiocodec(const char* value) {
+  
+  audiocodec_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Photon.Commands.StartStream.AudioCodec)
+}
+inline void StartStream::set_audiocodec(const char* value, size_t size) {
+  
+  audiocodec_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Photon.Commands.StartStream.AudioCodec)
+}
+inline ::std::string* StartStream::mutable_audiocodec() {
+  
+  // @@protoc_insertion_point(field_mutable:Photon.Commands.StartStream.AudioCodec)
+  return audiocodec_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StartStream::release_audiocodec() {
+  // @@protoc_insertion_point(field_release:Photon.Commands.StartStream.AudioCodec)
+  
+  return audiocodec_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StartStream::set_allocated_audiocodec(::std::string* audiocodec) {
+  if (audiocodec != NULL) {
+    
+  } else {
+    
+  }
+  audiocodec_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), audiocodec);
+  // @@protoc_insertion_point(field_set_allocated:Photon.Commands.StartStream.AudioCodec)
+}
+
+// uint32 AudioPayloadType = 32;
+inline void StartStream::clear_audiopayloadtype() {
+  audiopayloadtype_ = 0u;
+}
+inline ::google::protobuf::uint32 StartStream::audiopayloadtype() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.StartStream.AudioPayloadType)
+  return audiopayloadtype_;
+}
+inline void StartStream::set_audiopayloadtype(::google::protobuf::uint32 value) {
+  
+  audiopayloadtype_ = value;
+  // @@protoc_insertion_point(field_set:Photon.Commands.StartStream.AudioPayloadType)
+}
+
+// uint32 AudioIngestSSRC = 33;
+inline void StartStream::clear_audioingestssrc() {
+  audioingestssrc_ = 0u;
+}
+inline ::google::protobuf::uint32 StartStream::audioingestssrc() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.StartStream.AudioIngestSSRC)
+  return audioingestssrc_;
+}
+inline void StartStream::set_audioingestssrc(::google::protobuf::uint32 value) {
+  
+  audioingestssrc_ = value;
+  // @@protoc_insertion_point(field_set:Photon.Commands.StartStream.AudioIngestSSRC)
+}
+
+// -------------------------------------------------------------------
+
+// StreamStart_Response
+
+// uint32 IngestPort = 1;
+inline void StreamStart_Response::clear_ingestport() {
+  ingestport_ = 0u;
+}
+inline ::google::protobuf::uint32 StreamStart_Response::ingestport() const {
+  // @@protoc_insertion_point(field_get:Photon.Commands.StreamStart_Response.IngestPort)
+  return ingestport_;
+}
+inline void StreamStart_Response::set_ingestport(::google::protobuf::uint32 value) {
+  
+  ingestport_ = value;
+  // @@protoc_insertion_point(field_set:Photon.Commands.StreamStart_Response.IngestPort)
+}
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
